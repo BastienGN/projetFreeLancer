@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.inti.entities.JobOwner;
 import com.inti.repositories.JobOwnerRepository;
+import com.inti.services.interfaces.IJobOwnerService;
 
 @Service
-public class JobOwnerService {
+public class JobOwnerService implements IJobOwnerService{
 	@Autowired
 	JobOwnerRepository jobOwnerRepository;
 

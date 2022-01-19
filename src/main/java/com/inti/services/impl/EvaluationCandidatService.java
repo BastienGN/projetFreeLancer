@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.inti.entities.EvaluationCandidat;
 import com.inti.repositories.EvaluationCandidatRepository;
+import com.inti.services.interfaces.IEvaluationCandidatService;
 
 @Service
-public class EvaluationCandidatService {
+public class EvaluationCandidatService implements IEvaluationCandidatService{
 	@Autowired
 	EvaluationCandidatRepository evaluationCandidatRepository;
 

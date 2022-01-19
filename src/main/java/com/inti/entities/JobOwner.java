@@ -1,6 +1,7 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+
+import com.inti.models.Adresse;
 
 @Entity
 public class JobOwner extends Utilisateur implements Serializable {
@@ -63,13 +66,11 @@ public class JobOwner extends Utilisateur implements Serializable {
 		super();
 	}
 
-	public JobOwner(String nomEntreprise, String avis, Set<EvaluationCandidat> evaluationCandidats,
+	public JobOwner(	String nom, String prenom, String username, String password, Adresse adresse,Date dateNaissance, String adresseMail, Long telephone, String nomEntreprise, String avis, Set<EvaluationCandidat> evaluationCandidats,
 			Set<Projet> projets) {
-		super();
+		super(nom,prenom,username,password,adresse,dateNaissance,adresseMail,telephone);
 		this.nomEntreprise = nomEntreprise;
 		this.avis = avis;
-		EvaluationCandidats = evaluationCandidats;
-		Projets = projets;
 	}
 
 	@Override
