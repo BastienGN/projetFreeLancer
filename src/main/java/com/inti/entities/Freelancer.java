@@ -24,7 +24,7 @@ public class Freelancer extends Utilisateur
 	//liaison
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "ProfilEvaluationEntreprise-Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
-	inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntrepise"))
+	inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntreprise"))
 	private Set<EvaluationEntreprise> evalutationsEntreprises = new HashSet<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
