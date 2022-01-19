@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.inti.entities.Utilisateur;
 import com.inti.models.Adresse;
@@ -41,8 +42,7 @@ public class UtilisateurController {
     }
 
     @RequestMapping(value = "utilisateurs", method = RequestMethod.POST)
-	public Utilisateur saveUtilisateur(@RequestParam(name = "titre",required = false) String titre, 
-    		@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
+	public Utilisateur saveUtilisateur(@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
     		@RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
     		@RequestParam(name = "username",required = false) String username,
     		@RequestParam(name = "password",required = false) String password, 
@@ -51,12 +51,13 @@ public class UtilisateurController {
     		@RequestParam(name = "adresseMail",required = false) String adresseMail,
     		@RequestParam(name = "telephone",required = false) Long telephone, 
     		@RequestParam(name = "experience",required = false) Integer experience,
-    		@RequestParam(name = "cv",required = false) File cv,
+    		@RequestParam(name = "cv",required = false) MultipartFile cv,
     		@RequestParam(name = "note",required = false) Integer note,
 			@RequestParam(name = "sitePersonnel",required = false) String sitePersonnel, 
 			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise,
 			@RequestParam(name = "avis",required = false) String avis) {
-    	Utilisateur currentUtilisateur = new Utilisateur();
+    	try {
+    		Utilisateur currentUtilisateur = new Utilisateur();
         currentUtilisateur.setNomUtilisateur(nomUtilisateur);
         currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
         currentUtilisateur.setUsername(username);
@@ -72,6 +73,11 @@ public class UtilisateurController {
         currentUtilisateur.setNomEntreprise(nomEntreprise);
         currentUtilisateur.setAvis(avis);
 		return utilisateurService.save(currentUtilisateur);
+    	
+    	} catch (Exception ex) {
+            ex.printStackTrace();
+    	}
+    	
 	}
 
     @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
