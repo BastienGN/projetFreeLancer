@@ -5,13 +5,15 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import org.aspectj.weaver.ast.Test;
+import com.inti.models.*;
 
+@Entity
 public class Freelancer extends Utilisateur
 {
 	private Integer experience;
