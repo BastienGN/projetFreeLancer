@@ -42,7 +42,7 @@ public class UtilisateurController {
     }
 
     @RequestMapping(value = "utilisateurs", method = RequestMethod.POST)
-	public Utilisateur saveUtilisateur(@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
+	public String saveUtilisateur(@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
     		@RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
     		@RequestParam(name = "username",required = false) String username,
     		@RequestParam(name = "password",required = false) String password, 
@@ -67,39 +67,54 @@ public class UtilisateurController {
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
         currentUtilisateur.setExperience(experience);
-        currentUtilisateur.setCv(cv);
+        currentUtilisateur.setCv(cv.getBytes());
+        currentUtilisateur.setNote(note);
+        currentUtilisateur.setSitePersonnel(sitePersonnel);
+        currentUtilisateur.setNomEntreprise(nomEntreprise);
+        currentUtilisateur.setAvis(avis);
+		utilisateurService.save(currentUtilisateur);
+    	return "c'est ok";
+    	} catch (Exception ex) {
+            ex.printStackTrace();
+            return "c'est la problèmatique";
+    	}
+
+    	
+	}
+
+    @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
+    public Utilisateur updateUtilisateur(@RequestParam(name = "idUtilisateur",required = false) Long idUtilisateur,
+    		@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
+    		@RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
+    		@RequestParam(name = "username",required = false) String username,
+    		@RequestParam(name = "password",required = false) String password, 
+    		@RequestParam(name = "adresse",required = false) Adresse adresse,
+    		@RequestParam(name = "dateNaissance",required = false) Date dateNaissance,
+    		@RequestParam(name = "adresseMail",required = false) String adresseMail,
+    		@RequestParam(name = "telephone",required = false) Long telephone, 
+    		@RequestParam(name = "experience",required = false) Integer experience,
+    		@RequestParam(name = "cv",required = false) MultipartFile cv,
+    		@RequestParam(name = "note",required = false) Integer note,
+			@RequestParam(name = "sitePersonnel",required = false) String sitePersonnel, 
+			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise,
+			@RequestParam(name = "avis",required = false) String avis)
+    {
+    	Utilisateur currentUtilisateur =utilisateurService.findOne(idUtilisateur);
+        currentUtilisateur.setNomUtilisateur(nomUtilisateur);;
+        currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
+        currentUtilisateur.setUsername(username);
+        currentUtilisateur.setPassword(password);
+        currentUtilisateur.setAdresse(adresse);
+        currentUtilisateur.setDateNaissance(dateNaissance);
+        currentUtilisateur.setAdresseMail(adresseMail);
+        currentUtilisateur.setTelephone(telephone);
+        currentUtilisateur.setExperience(experience);
         currentUtilisateur.setNote(note);
         currentUtilisateur.setSitePersonnel(sitePersonnel);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
         currentUtilisateur.setAvis(avis);
 		return utilisateurService.save(currentUtilisateur);
-    	
-    	} catch (Exception ex) {
-            ex.printStackTrace();
-    	}
-    	
-	}
-
-    @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
-    public Utilisateur updateUtilisateur(@PathVariable("idU") Long idUtilisateur,
-            @RequestBody Utilisateur utilisateur) {
-        Utilisateur currentUtilisateur = utilisateurService.findOne(idUtilisateur);
-        currentUtilisateur.setNomUtilisateur(utilisateur.getNomUtilisateur());
-        currentUtilisateur.setPrenomUtilisateur(utilisateur.getPrenomUtilisateur());
-        currentUtilisateur.setUsername(utilisateur.getUsername());
-        currentUtilisateur.setPassword(utilisateur.getPassword());
-        currentUtilisateur.setAdresse(utilisateur.getAdresse());
-        currentUtilisateur.setDateNaissance(utilisateur.getDateNaissance());
-        currentUtilisateur.setAdresseMail(utilisateur.getAdresseMail());
-        currentUtilisateur.setTelephone(utilisateur.getTelephone());
-        currentUtilisateur.setExperience(utilisateur.getExperience());
-        currentUtilisateur.setCv(utilisateur.getCv());
-        currentUtilisateur.setNote(utilisateur.getNote());
-        currentUtilisateur.setSitePersonnel(utilisateur.getSitePersonnel());
-        currentUtilisateur.setNomEntreprise(utilisateur.getNomEntreprise());
-        currentUtilisateur.setAvis(utilisateur.getAvis());
-        return utilisateurService.save(currentUtilisateur);
-    }
+}
 
     @RequestMapping(value = "utilisateurs/{idUtilisateur}", method = RequestMethod.DELETE)
     public void deleteUtilisateur(@PathVariable("idUtilisateur") Long idUtilisateur) {

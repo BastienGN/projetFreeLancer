@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
@@ -34,7 +35,10 @@ public class Utilisateur implements Serializable {
 	private Long telephone;
 	//Attributs Freelancers
 	private Integer experience;
-	private File cv;
+	
+	@Lob
+	private byte[] cv;
+	
 	private Integer note;
 	private String sitePersonnel;
 	// Attributs JobOwner
@@ -166,11 +170,7 @@ public class Utilisateur implements Serializable {
 		this.experience = experience;
 	}
 
-	public File getCv() {
-		return cv;
-	}
-
-	public void setCv(File cv) {
+	public void setCv(byte[] cv) {
 		this.cv = cv;
 	}
 
@@ -247,5 +247,4 @@ public class Utilisateur implements Serializable {
 				+ ", sitePersonnel=" + sitePersonnel + ", nomEntreprise=" + nomEntreprise + ", avis=" + avis
 				+ ", enabled=" + enabled + "]";
 	}
-
 }
