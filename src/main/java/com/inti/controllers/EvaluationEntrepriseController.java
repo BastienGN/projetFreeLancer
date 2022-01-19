@@ -15,7 +15,7 @@ import com.inti.services.interfaces.IEvaluationEntrepriseService;
 
 @RestController
 @CrossOrigin
-public class EvaluationEntreprise {
+public class EvaluationEntrepriseController {
 	@Autowired
 	IEvaluationEntrepriseService EvaluationEntrepriseService;
 
@@ -29,10 +29,6 @@ public class EvaluationEntreprise {
 		return EvaluationEntrepriseService.findOne(idEvaluationEntreprise);
 	}
 
-	@RequestMapping(value = "EvaluationEntreprises/{idR}/{libelle}", method = RequestMethod.GET)
-	public EvaluationEntreprise findByIdEvaluationEntrepriseAndLibelle(@PathVariable("idR") Long idEvaluationEntreprise, @PathVariable("libelle") String libelle) {
-		return EvaluationEntrepriseService.findByIdEvaluationEntrepriseAndLibelle(idEvaluationEntreprise, libelle);
-	}
 
 	@RequestMapping(value = "EvaluationEntreprises", method = RequestMethod.POST)
 	public EvaluationEntreprise saveEvaluationEntreprise(@RequestBody EvaluationEntreprise EvaluationEntreprise) {
@@ -42,12 +38,13 @@ public class EvaluationEntreprise {
 	@RequestMapping(value = "EvaluationEntreprises/{idR}", method = RequestMethod.PUT)
 	public EvaluationEntreprise updateEvaluationEntreprise(@PathVariable(value = "idR") Long idEvaluationEntreprise, @RequestBody EvaluationEntreprise EvaluationEntreprise) {
 		EvaluationEntreprise currentEvaluationEntreprise = EvaluationEntrepriseService.findOne(idEvaluationEntreprise);
-		currentEvaluationEntreprise.setLibelle(EvaluationEntreprise.getLibelle());
+		currentEvaluationEntreprise.setDescription(EvaluationEntreprise.getDescription());
+		currentEvaluationEntreprise.setNote(EvaluationEntreprise.getNote());
 		return EvaluationEntrepriseService.save(currentEvaluationEntreprise);
 	}
 
 	@RequestMapping(value = "EvaluationEntreprises/{idR}", method = RequestMethod.DELETE)
 	public void deleteEvaluationEntreprise(@PathVariable(value = "idR") Long idEvaluationEntreprise) {
 		EvaluationEntrepriseService.delete(idEvaluationEntreprise);
-
+	}
 }
