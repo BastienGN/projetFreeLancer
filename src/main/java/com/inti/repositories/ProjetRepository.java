@@ -1,5 +1,11 @@
 package com.inti.repositories;
 
-public class ProjetRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.inti.entities.Projet;
+
+@Repository
+public interface ProjetRepository extends JpaRepository<Projet, Long>{
 
 }
