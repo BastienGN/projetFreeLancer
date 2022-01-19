@@ -19,32 +19,32 @@ public class TestController {
 	@Autowired
 	ITestService TestService;
 
-	@RequestMapping(value = "Tests", method = RequestMethod.GET)
+	@RequestMapping(value = "tests", method = RequestMethod.GET)
 	public List<Test> findAll() {
 		return TestService.findAll();
 	}
 
-	@RequestMapping(value = "Tests/{idR}", method = RequestMethod.GET)
-	public Test findOne(@PathVariable("idR") Long idTest) {
+	@RequestMapping(value = "tests/{idT}", method = RequestMethod.GET)
+	public Test findOne(@PathVariable("idT") Long idTest) {
 		return TestService.findOne(idTest);
 	}
 
 
-	@RequestMapping(value = "Tests", method = RequestMethod.POST)
+	@RequestMapping(value = "tests", method = RequestMethod.POST)
 	public Test saveTest(@RequestBody Test Test) {
 		return TestService.save(Test);
 	}
 
-	@RequestMapping(value = "Tests/{idR}", method = RequestMethod.PUT)
-	public Test updateTest(@PathVariable(value = "idR") Long idTest, @RequestBody Test Test) {
+	@RequestMapping(value = "tests/{idT}", method = RequestMethod.PUT)
+	public Test updateTest(@PathVariable(value = "idT") Long idTest, @RequestBody Test Test) {
 		Test currentTest = TestService.findOne(idTest);
 		currentTest.setDescription(Test.getDescription());
 		currentTest.setResultat(Test.getResultat());
 		return TestService.save(currentTest);
 	}
 
-	@RequestMapping(value = "Tests/{idR}", method = RequestMethod.DELETE)
-	public void deleteTest(@PathVariable(value = "idR") Long idTest) {
+	@RequestMapping(value = "tests/{idT}", method = RequestMethod.DELETE)
+	public void deleteTest(@PathVariable(value = "idT") Long idTest) {
 		TestService.delete(idTest);
 	}
 }

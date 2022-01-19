@@ -19,32 +19,32 @@ public class EvaluationEntrepriseController {
 	@Autowired
 	IEvaluationEntrepriseService EvaluationEntrepriseService;
 
-	@RequestMapping(value = "EvaluationEntreprises", method = RequestMethod.GET)
+	@RequestMapping(value = "evaluationEntreprises", method = RequestMethod.GET)
 	public List<EvaluationEntreprise> findAll() {
 		return EvaluationEntrepriseService.findAll();
 	}
 
-	@RequestMapping(value = "EvaluationEntreprises/{idR}", method = RequestMethod.GET)
-	public EvaluationEntreprise findOne(@PathVariable("idR") Long idEvaluationEntreprise) {
+	@RequestMapping(value = "evaluationEntreprises/{idEE}", method = RequestMethod.GET)
+	public EvaluationEntreprise findOne(@PathVariable("idEE") Long idEvaluationEntreprise) {
 		return EvaluationEntrepriseService.findOne(idEvaluationEntreprise);
 	}
 
 
-	@RequestMapping(value = "EvaluationEntreprises", method = RequestMethod.POST)
+	@RequestMapping(value = "evaluationEntreprises", method = RequestMethod.POST)
 	public EvaluationEntreprise saveEvaluationEntreprise(@RequestBody EvaluationEntreprise EvaluationEntreprise) {
 		return EvaluationEntrepriseService.save(EvaluationEntreprise);
 	}
 
-	@RequestMapping(value = "EvaluationEntreprises/{idR}", method = RequestMethod.PUT)
-	public EvaluationEntreprise updateEvaluationEntreprise(@PathVariable(value = "idR") Long idEvaluationEntreprise, @RequestBody EvaluationEntreprise EvaluationEntreprise) {
+	@RequestMapping(value = "evaluationEntreprises/{idEE}", method = RequestMethod.PUT)
+	public EvaluationEntreprise updateEvaluationEntreprise(@PathVariable(value = "idEE") Long idEvaluationEntreprise, @RequestBody EvaluationEntreprise EvaluationEntreprise) {
 		EvaluationEntreprise currentEvaluationEntreprise = EvaluationEntrepriseService.findOne(idEvaluationEntreprise);
 		currentEvaluationEntreprise.setDescription(EvaluationEntreprise.getDescription());
 		currentEvaluationEntreprise.setNote(EvaluationEntreprise.getNote());
 		return EvaluationEntrepriseService.save(currentEvaluationEntreprise);
 	}
 
-	@RequestMapping(value = "EvaluationEntreprises/{idR}", method = RequestMethod.DELETE)
-	public void deleteEvaluationEntreprise(@PathVariable(value = "idR") Long idEvaluationEntreprise) {
+	@RequestMapping(value = "evaluationEntreprises/{idEE}", method = RequestMethod.DELETE)
+	public void deleteEvaluationEntreprise(@PathVariable(value = "idEE") Long idEvaluationEntreprise) {
 		EvaluationEntrepriseService.delete(idEvaluationEntreprise);
 	}
 }

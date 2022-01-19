@@ -20,8 +20,8 @@ public class EvaluationCandidatController {
 		return evaluationCandidatService.findAll();
 	}
 
-	@RequestMapping(value = "evaluationCandidats/{idEvaluationCandidat}", method = RequestMethod.GET)
-	public EvaluationCandidat findOne(@PathVariable("idR") Long idEvaluationCandidat) {
+	@RequestMapping(value = "evaluationCandidats/{idEC}", method = RequestMethod.GET)
+	public EvaluationCandidat findOne(@PathVariable("idEC") Long idEvaluationCandidat) {
 		return evaluationCandidatService.findOne(idEvaluationCandidat);
 	}
 
@@ -30,8 +30,8 @@ public class EvaluationCandidatController {
 		return evaluationCandidatService.save(evaluationCandidat);
 	}
 
-	@RequestMapping(value = "evaluationCandidats/{idR}", method = RequestMethod.PUT)
-	public EvaluationCandidat updateEvaluationCandidat(@PathVariable(value = "idR") Long idEvaluationCandidat, @RequestBody EvaluationCandidat evaluationCandidat) {
+	@RequestMapping(value = "evaluationCandidats/{idEC}", method = RequestMethod.PUT)
+	public EvaluationCandidat updateEvaluationCandidat(@PathVariable(value = "idEC") Long idEvaluationCandidat, @RequestBody EvaluationCandidat evaluationCandidat) {
 		EvaluationCandidat currentEvaluationCandidat = evaluationCandidatService.findOne(idEvaluationCandidat);
 		currentEvaluationCandidat.setNote(evaluationCandidat.getNote());
 		currentEvaluationCandidat.setDescription(evaluationCandidat.getDescription());
