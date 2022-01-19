@@ -58,15 +58,13 @@ public class Utilisateur implements Serializable {
 	private Set<Test> tests = new HashSet<>();
 	
 	@ManyToMany
-	@JoinTable( name = "EvaluationCandidat",
-    joinColumns = @JoinColumn( name = "idUtilisateur"),
-    inverseJoinColumns = @JoinColumn( name = "idEvaluationCandidat" ) )
+	@JoinTable(name = "ProfilEvalCandidat-JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+	inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
 	private Set<EvaluationCandidat> evaluationCandidats = new HashSet<>();
 
 	@ManyToMany
-	@JoinTable( name = "Projet",
-    joinColumns = @JoinColumn( name = "idUtilisateur" ),
-    inverseJoinColumns = @JoinColumn( name = "idProjet" ) )
+	@JoinTable(name = "ProfilProjet-JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+	inverseJoinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"))
 	private Set<Projet> projets = new HashSet<>();
 	
 	public Utilisateur() {
