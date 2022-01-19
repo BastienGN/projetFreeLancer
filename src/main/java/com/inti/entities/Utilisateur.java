@@ -15,6 +15,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
+import com.inti.models.Adresse;
+
 @Entity
 public class Utilisateur implements Serializable {
 	@Id
