@@ -48,22 +48,22 @@ public class Utilisateur implements Serializable {
 	private Set<Role> roles = new HashSet<>();
 
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "ProfilEvaluationEntreprise-Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
+	@JoinTable(name = "ProfilEvaluationEntreprise_Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
 	inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntreprise"))
 	private Set<EvaluationEntreprise> evalutationsEntreprises = new HashSet<>();
 	
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "ProfilTest-Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
+	@JoinTable(name = "ProfilTest_Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
 	inverseJoinColumns = @JoinColumn(name = "id_test", referencedColumnName = "idTest"))
 	private Set<Test> tests = new HashSet<>();
 	
 	@ManyToMany
-	@JoinTable(name = "ProfilEvalCandidat-JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+	@JoinTable(name = "ProfilEvalCandidat_JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
 	inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
 	private Set<EvaluationCandidat> evaluationCandidats = new HashSet<>();
 
 	@ManyToMany
-	@JoinTable(name = "ProfilProjet-JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+	@JoinTable(name = "ProfilProjet_JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
 	inverseJoinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"))
 	private Set<Projet> projets = new HashSet<>();
 	
