@@ -1,5 +1,6 @@
 package com.inti.entities;
 
+import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
@@ -31,38 +32,46 @@ public class Utilisateur implements Serializable {
 	private Date dateNaissance;
 	private String adresseMail;
 	private Long telephone;
+	//Attributs Freelancers
+	private Integer experience;
+	private File cv;
+	private Integer note;
+	private String sitePersonnel;
+	// Attributs JobOwner
+	private String nomEntreprise;
+	private String avis;
+	
 	private boolean enabled = true;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "Profil", joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
 
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "ProfilEvaluationEntreprise-Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
+	inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntreprise"))
+	private Set<EvaluationEntreprise> evalutationsEntreprises = new HashSet<>();
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "ProfilTest-Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
+	inverseJoinColumns = @JoinColumn(name = "id_test", referencedColumnName = "idTest"))
+	private Set<Test> tests = new HashSet<>();
+	
+	@ManyToMany
+	@JoinTable( name = "EvaluationCandidat",
+    joinColumns = @JoinColumn( name = "idUtilisateur"),
+    inverseJoinColumns = @JoinColumn( name = "idEvaluationCandidat" ) )
+	private Set<EvaluationCandidat> evaluationCandidats = new HashSet<>();
+
+	@ManyToMany
+	@JoinTable( name = "Projet",
+    joinColumns = @JoinColumn( name = "idUtilisateur" ),
+    inverseJoinColumns = @JoinColumn( name = "idProjet" ) )
+	private Set<Projet> projets = new HashSet<>();
+	
 	public Utilisateur() {
 	}
 	
-	
-
-	public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String username, String password,
-			Adresse adresse, Date dateNaissance, String adresseMail, Long telephone) {
-		this.nomUtilisateur = nomUtilisateur;
-		this.prenomUtilisateur = prenomUtilisateur;
-		this.username = username;
-		this.password = password;
-		this.adresse = adresse;
-		this.dateNaissance = dateNaissance;
-		this.adresseMail = adresseMail;
-		this.telephone = telephone;
-	}
-
-
-
-	public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String username, String password) {
-		this.nomUtilisateur = nomUtilisateur;
-		this.prenomUtilisateur = prenomUtilisateur;
-		this.username = username;
-		this.password = password;
-	}
-
 	public Long getIdUtilisateur() {
 		return idUtilisateur;
 	}
@@ -151,12 +160,94 @@ public class Utilisateur implements Serializable {
 		this.roles = roles;
 	}
 
+	public Integer getExperience() {
+		return experience;
+	}
+
+	public void setExperience(Integer experience) {
+		this.experience = experience;
+	}
+
+	public File getCv() {
+		return cv;
+	}
+
+	public void setCv(File cv) {
+		this.cv = cv;
+	}
+
+	public Integer getNote() {
+		return note;
+	}
+
+	public void setNote(Integer note) {
+		this.note = note;
+	}
+
+	public String getSitePersonnel() {
+		return sitePersonnel;
+	}
+
+	public void setSitePersonnel(String sitePersonnel) {
+		this.sitePersonnel = sitePersonnel;
+	}
+
+	public String getNomEntreprise() {
+		return nomEntreprise;
+	}
+
+	public void setNomEntreprise(String nomEntreprise) {
+		this.nomEntreprise = nomEntreprise;
+	}
+
+	public String getAvis() {
+		return avis;
+	}
+
+	public void setAvis(String avis) {
+		this.avis = avis;
+	}
+
+	public Set<EvaluationEntreprise> getEvalutationsEntreprises() {
+		return evalutationsEntreprises;
+	}
+
+	public void setEvalutationsEntreprises(Set<EvaluationEntreprise> evalutationsEntreprises) {
+		this.evalutationsEntreprises = evalutationsEntreprises;
+	}
+
+	public Set<Test> getTests() {
+		return tests;
+	}
+
+	public void setTests(Set<Test> tests) {
+		this.tests = tests;
+	}
+
+	public Set<EvaluationCandidat> getEvaluationCandidats() {
+		return evaluationCandidats;
+	}
+
+	public void setEvaluationCandidats(Set<EvaluationCandidat> evaluationCandidats) {
+		this.evaluationCandidats = evaluationCandidats;
+	}
+
+	public Set<Projet> getProjets() {
+		return projets;
+	}
+
+	public void setProjets(Set<Projet> projets) {
+		this.projets = projets;
+	}
+
 	@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
 				+ ", prenomUtilisateur=" + prenomUtilisateur + ", username=" + username + ", password=" + password
-				+ ", dateNaissance=" + dateNaissance + ", adresseMail=" + adresseMail + ", telephone=" + telephone
-				+ ", enabled=" + enabled + ", roles=" + roles + "]";
+				+ ", adresse=" + adresse + ", dateNaissance=" + dateNaissance + ", adresseMail=" + adresseMail
+				+ ", telephone=" + telephone + ", experience=" + experience + ", cv=" + cv + ", note=" + note
+				+ ", sitePersonnel=" + sitePersonnel + ", nomEntreprise=" + nomEntreprise + ", avis=" + avis
+				+ ", enabled=" + enabled + "]";
 	}
 
 }

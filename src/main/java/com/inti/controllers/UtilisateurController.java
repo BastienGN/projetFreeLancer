@@ -1,5 +1,6 @@
 package com.inti.controllers;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +54,13 @@ public class UtilisateurController {
         currentUtilisateur.setDateNaissance(utilisateur.getDateNaissance());
         currentUtilisateur.setAdresseMail(utilisateur.getAdresseMail());
         currentUtilisateur.setTelephone(utilisateur.getTelephone());
+        currentUtilisateur.setExperience(utilisateur.getExperience());
+        currentUtilisateur.setCv(utilisateur.getCv());
+        currentUtilisateur.setNote(utilisateur.getNote());
+        currentUtilisateur.setSitePersonnel(utilisateur.getSitePersonnel());
+        currentUtilisateur.setNomEntreprise(utilisateur.getNomEntreprise());
+        currentUtilisateur.setAvis(utilisateur.getAvis());
         return utilisateurService.save(currentUtilisateur);
-
     }
 
     @RequestMapping(value = "utilisateurs/{idUtilisateur}", method = RequestMethod.DELETE)
