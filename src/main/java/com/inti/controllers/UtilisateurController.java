@@ -83,7 +83,7 @@ public class UtilisateurController {
 	}
 
     @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
-    public Utilisateur updateUtilisateur(@RequestParam(name = "idUtilisateur",required = false) Long idUtilisateur,
+    public String updateUtilisateur(@RequestParam(name = "idUtilisateur",required = false) Long idUtilisateur,
     		@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
     		@RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
     		@RequestParam(name = "username",required = false) String username,
@@ -97,10 +97,10 @@ public class UtilisateurController {
     		@RequestParam(name = "note",required = false) Integer note,
 			@RequestParam(name = "sitePersonnel",required = false) String sitePersonnel, 
 			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise,
-			@RequestParam(name = "avis",required = false) String avis)
-    {
+			@RequestParam(name = "avis",required = false) String avis) {
+     	try {
     	Utilisateur currentUtilisateur =utilisateurService.findOne(idUtilisateur);
-        currentUtilisateur.setNomUtilisateur(nomUtilisateur);;
+        currentUtilisateur.setNomUtilisateur(nomUtilisateur);
         currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
         currentUtilisateur.setUsername(username);
         currentUtilisateur.setPassword(password);
@@ -109,11 +109,17 @@ public class UtilisateurController {
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
         currentUtilisateur.setExperience(experience);
+        currentUtilisateur.setCv(cv.getBytes());
         currentUtilisateur.setNote(note);
         currentUtilisateur.setSitePersonnel(sitePersonnel);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
         currentUtilisateur.setAvis(avis);
-		return utilisateurService.save(currentUtilisateur);
+		utilisateurService.save(currentUtilisateur);
+    	return "c'est ok";
+    	} catch (Exception ex) {
+            ex.printStackTrace();
+            return "c'est la problèmatique";
+    	}
 }
 
     @RequestMapping(value = "utilisateurs/{idUtilisateur}", method = RequestMethod.DELETE)
