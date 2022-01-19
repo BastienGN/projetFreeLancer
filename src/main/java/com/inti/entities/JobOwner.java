@@ -19,7 +19,7 @@ public class JobOwner extends Utilisateur implements Serializable {
 	private String nomEntreprise;
 	private String avis;
 	@ManyToMany
-	@JoinTable( name = "JobOwnerEvaluationCandidat",
+	@JoinTable( name = "JobOwnerEvaluationCandidatrrrrrr",
     joinColumns = @JoinColumn( name = "idUtilisateur"),
     inverseJoinColumns = @JoinColumn( name = "idEvaluationCandidat" ) )
 	private Set<EvaluationCandidat> EvaluationCandidats = new HashSet();
