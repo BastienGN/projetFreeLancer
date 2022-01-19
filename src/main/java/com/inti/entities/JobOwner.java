@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
@@ -15,8 +16,8 @@ public class JobOwner extends Utilisateur implements Serializable {
 	private String nomEntreprise;
 	private String avis;
 	@ManyToMany
-	@JoinTable( name = "JobOwnerEvalCandidat",
-    joinColumns = @JoinColumn( name = "idUtilisateur" ),
+	@JoinTable( name = "JobOwnerEvaluationCandidat",
+    joinColumns = @JoinColumn( name = "idUtilisateur"),
     inverseJoinColumns = @JoinColumn( name = "idEvaluationCandidat" ) )
 	private Set<EvaluationCandidat> EvaluationCandidats = new HashSet();
 
