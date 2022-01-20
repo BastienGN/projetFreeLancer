@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="table_Candidature")
@@ -19,6 +20,7 @@ public class Candidature implements Serializable{
 	private String lettreMotivation;
 
 	@ManyToOne
+	@Transient
 	private Projet projet;
 	
 	public Candidature() {

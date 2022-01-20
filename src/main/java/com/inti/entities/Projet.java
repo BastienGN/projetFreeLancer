@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="table_projet")
@@ -23,6 +24,7 @@ public class Projet implements Serializable{
 	private String statut;
 	
 	@OneToMany(mappedBy="projet")
+	@Transient
 	private Set<Candidature> candidature=new HashSet<>();
 	
 	public Projet() {
