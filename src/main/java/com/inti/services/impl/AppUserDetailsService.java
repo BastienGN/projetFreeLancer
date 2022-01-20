@@ -26,7 +26,7 @@ public class AppUserDetailsService implements UserDetailsService{
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Utilisateur utilisateur = utilisateurService.findbyUsername(username);
 		Set<Role> roles=utilisateur.getRoles();
-		// Les profils
+		
 		Set<GrantedAuthority> authorities=new HashSet<GrantedAuthority>();		
 		for(Role role:roles) {
 			authorities.add(new SimpleGrantedAuthority(role.getLibelle()));
