@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,6 +24,8 @@ import com.inti.services.interfaces.IUtilisateurService;
 public class UtilisateurController {
     @Autowired
     IUtilisateurService utilisateurService;
+    @Autowired
+	PasswordEncoder passwordEncoder;
 
     @RequestMapping(value="utilisateurs", method = RequestMethod.GET)
     public List<Utilisateur> findAll() {
@@ -61,7 +64,7 @@ public class UtilisateurController {
         currentUtilisateur.setNomUtilisateur(nomUtilisateur);
         currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
         currentUtilisateur.setUsername(username);
-        currentUtilisateur.setPassword(password);
+        currentUtilisateur.setPassword(passwordEncoder.encode(password));
         currentUtilisateur.setAdresse(adresse);
         currentUtilisateur.setDateNaissance(dateNaissance);
         currentUtilisateur.setAdresseMail(adresseMail);
@@ -103,7 +106,7 @@ public class UtilisateurController {
         currentUtilisateur.setNomUtilisateur(nomUtilisateur);
         currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
         currentUtilisateur.setUsername(username);
-        currentUtilisateur.setPassword(password);
+        currentUtilisateur.setPassword(passwordEncoder.encode(password));
         currentUtilisateur.setAdresse(adresse);
         currentUtilisateur.setDateNaissance(dateNaissance);
         currentUtilisateur.setAdresseMail(adresseMail);
