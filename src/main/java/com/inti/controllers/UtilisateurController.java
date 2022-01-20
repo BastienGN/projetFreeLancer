@@ -126,4 +126,10 @@ public class UtilisateurController {
     public void deleteUtilisateur(@PathVariable("idUtilisateur") Long idUtilisateur) {
         utilisateurService.delete(idUtilisateur);
     }
+    
+    @RequestMapping(value="util/{libelle_role}", method=RequestMethod.GET)
+    public List<Utilisateur> findByRole(@PathVariable("libelle_role") String libelle)
+    {
+    	return utilisateurService.findByRole(libelle);
+    }
 }

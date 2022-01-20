@@ -16,10 +16,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import com.inti.models.Adresse;
 
 @Entity
+@Table(name="table_Utilisateur")
 public class Utilisateur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,28 +49,35 @@ public class Utilisateur implements Serializable {
 	
 	private boolean enabled = true;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "Profil", joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur"), inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
+	@ManyToMany
+	@JoinTable(	name = "Profil_Utilisateur_Role",
+				joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur"),
+				inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
 	private Set<Role> roles = new HashSet<>();
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "ProfilEvaluationEntreprise_Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
-	inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntreprise"))
+	@ManyToMany
+	@JoinTable(	name = "Profil_Freelancer_EvaluationEntreprise", 
+				joinColumns = @JoinColumn(name = "id_freelancer", 
+				referencedColumnName = "idUtilisateur"), 
+				inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntreprise"))
 	private Set<EvaluationEntreprise> evalutationsEntreprises = new HashSet<>();
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "ProfilTest_Freelancer", joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
-	inverseJoinColumns = @JoinColumn(name = "id_test", referencedColumnName = "idTest"))
+	@ManyToMany
+	@JoinTable(	name = "Profil_Freelancer_Test",
+				joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
+				inverseJoinColumns = @JoinColumn(name = "id_test", referencedColumnName = "idTest"))
 	private Set<Test> tests = new HashSet<>();
 	
 	@ManyToMany
-	@JoinTable(name = "ProfilEvalCandidat_JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
-	inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
+	@JoinTable(	name = "Profil_EvaluationCandidat_JobOwner",
+				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+				inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
 	private Set<EvaluationCandidat> evaluationCandidats = new HashSet<>();
 
 	@ManyToMany
-	@JoinTable(name = "ProfilProjet_JobOwner", joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
-	inverseJoinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"))
+	@JoinTable(	name = "Profil_JobOwner_Projet", 
+				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+				inverseJoinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"))
 	private Set<Projet> projets = new HashSet<>();
 	
 	public Utilisateur() {
