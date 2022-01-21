@@ -133,7 +133,6 @@ public class Utilisateur implements Serializable {
 		
 	//Relation
 	@ManyToMany
-	@Transient
 	@JoinTable(	name = "Profil_Utilisateur_Role",
 				joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur"),
 				inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
@@ -147,7 +146,6 @@ public class Utilisateur implements Serializable {
 	
 		
 	@ManyToMany
-	@Transient
 	@JoinTable(	name = "Profil_Freelancer_EvaluationEntreprise", 
 				joinColumns = @JoinColumn(name = "id_freelancer", 
 				referencedColumnName = "idUtilisateur"), 
@@ -162,7 +160,6 @@ public class Utilisateur implements Serializable {
 	
 		
 	@ManyToMany
-	@Transient
 	@JoinTable(	name = "Profil_Freelancer_Test",
 				joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
 				inverseJoinColumns = @JoinColumn(name = "id_test", referencedColumnName = "idTest"))
@@ -176,7 +173,6 @@ public class Utilisateur implements Serializable {
 	
 		
 	@ManyToMany
-	@Transient
 	@JoinTable(	name = "Profil_EvaluationCandidat_JobOwner",
 				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
 				inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
@@ -190,7 +186,6 @@ public class Utilisateur implements Serializable {
 	
 		
 	@ManyToMany
-	@Transient
 	@JoinTable(	name = "Profil_JobOwner_Projet", 
 				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
 				inverseJoinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"))

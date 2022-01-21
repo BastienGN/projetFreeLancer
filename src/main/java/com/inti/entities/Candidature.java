@@ -50,7 +50,6 @@ public class Candidature implements Serializable{
 
 
 	@ManyToOne
-	@Transient
 	private Projet projet;
 		public Projet getProjet() {
 			return projet;
