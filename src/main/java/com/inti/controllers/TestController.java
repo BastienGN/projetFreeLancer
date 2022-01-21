@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Test;
@@ -40,6 +41,14 @@ public class TestController {
 		Test currentTest = TestService.findOne(idTest);
 		currentTest.setDescription(Test.getDescription());
 		currentTest.setResultat(Test.getResultat());
+		return TestService.save(currentTest);
+	}
+	
+	@RequestMapping(value = "tests/{idT}", method = RequestMethod.PUT)
+	public Test updateTest(@PathVariable(value = "idT") Long idTest, 
+			@RequestParam(name = "resultat",required = false) String resultat) {
+		Test currentTest = TestService.findOne(idTest);
+		currentTest.setResultat(resultat);
 		return TestService.save(currentTest);
 	}
 
