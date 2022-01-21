@@ -42,36 +42,30 @@ public class UtilisateurController {
     }
 
     @RequestMapping(value = "utilisateurs", method = RequestMethod.POST)
-	public String saveUtilisateur(@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
+	public String saveUtilisateur(
+			@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
     		@RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
     		@RequestParam(name = "username",required = false) String username,
     		@RequestParam(name = "password",required = false) String password, 
-    		@RequestParam(name = "adresse",required = false) Adresse adresse,
-    		@RequestParam(name = "dateNaissance",required = false) Date dateNaissance,
     		@RequestParam(name = "adresseMail",required = false) String adresseMail,
     		@RequestParam(name = "telephone",required = false) Long telephone, 
     		@RequestParam(name = "experience",required = false) Integer experience,
     		@RequestParam(name = "cv",required = false) MultipartFile cv,
     		@RequestParam(name = "note",required = false) Integer note,
-			@RequestParam(name = "sitePersonnel",required = false) String sitePersonnel, 
-			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise,
-			@RequestParam(name = "avis",required = false) String avis) {
+			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise
+								) {
     	try {
     		Utilisateur currentUtilisateur = new Utilisateur();
         currentUtilisateur.setNomUtilisateur(nomUtilisateur);
         currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
         currentUtilisateur.setUsername(username);
         currentUtilisateur.setPassword(password);
-        currentUtilisateur.setAdresse(adresse);
-        currentUtilisateur.setDateNaissance(dateNaissance);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
         currentUtilisateur.setExperience(experience);
         currentUtilisateur.setCv(cv.getBytes());
         currentUtilisateur.setNote(note);
-        currentUtilisateur.setSitePersonnel(sitePersonnel);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
-        currentUtilisateur.setAvis(avis);
 		utilisateurService.save(currentUtilisateur);
     	return "c'est ok";
     	} catch (Exception ex) {
@@ -83,37 +77,31 @@ public class UtilisateurController {
 	}
 
     @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
-    public String updateUtilisateur(@RequestParam(name = "idUtilisateur",required = false) Long idUtilisateur,
+    public String updateUtilisateur(
+    		@RequestParam(name = "idUtilisateur",required = false) Long idUtilisateur,
     		@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
-    		@RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
-    		@RequestParam(name = "username",required = false) String username,
-    		@RequestParam(name = "password",required = false) String password, 
-    		@RequestParam(name = "adresse",required = false) Adresse adresse,
-    		@RequestParam(name = "dateNaissance",required = false) Date dateNaissance,
-    		@RequestParam(name = "adresseMail",required = false) String adresseMail,
-    		@RequestParam(name = "telephone",required = false) Long telephone, 
-    		@RequestParam(name = "experience",required = false) Integer experience,
-    		@RequestParam(name = "cv",required = false) MultipartFile cv,
-    		@RequestParam(name = "note",required = false) Integer note,
-			@RequestParam(name = "sitePersonnel",required = false) String sitePersonnel, 
-			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise,
-			@RequestParam(name = "avis",required = false) String avis) {
+    	    @RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
+    	    @RequestParam(name = "username",required = false) String username,
+    	    @RequestParam(name = "password",required = false) String password, 
+    	    @RequestParam(name = "adresseMail",required = false) String adresseMail,
+    	    @RequestParam(name = "telephone",required = false) Long telephone, 
+    	    @RequestParam(name = "experience",required = false) Integer experience,
+    	    @RequestParam(name = "cv",required = false) MultipartFile cv,
+    	    @RequestParam(name = "note",required = false) Integer note,
+    		@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise
+    									) {
      	try {
     	Utilisateur currentUtilisateur =utilisateurService.findOne(idUtilisateur);
         currentUtilisateur.setNomUtilisateur(nomUtilisateur);
         currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
         currentUtilisateur.setUsername(username);
         currentUtilisateur.setPassword(password);
-        currentUtilisateur.setAdresse(adresse);
-        currentUtilisateur.setDateNaissance(dateNaissance);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
         currentUtilisateur.setExperience(experience);
         currentUtilisateur.setCv(cv.getBytes());
         currentUtilisateur.setNote(note);
-        currentUtilisateur.setSitePersonnel(sitePersonnel);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
-        currentUtilisateur.setAvis(avis);
 		utilisateurService.save(currentUtilisateur);
     	return "c'est ok";
     	} catch (Exception ex) {

@@ -38,7 +38,7 @@ public class EvaluationEntrepriseController {
 	@RequestMapping(value = "evaluationEntreprises/{idEE}", method = RequestMethod.PUT)
 	public EvaluationEntreprise updateEvaluationEntreprise(@PathVariable(value = "idEE") Long idEvaluationEntreprise, @RequestBody EvaluationEntreprise EvaluationEntreprise) {
 		EvaluationEntreprise currentEvaluationEntreprise = EvaluationEntrepriseService.findOne(idEvaluationEntreprise);
-		currentEvaluationEntreprise.setDescription(EvaluationEntreprise.getDescription());
+		currentEvaluationEntreprise.setUsername(EvaluationEntreprise.getUsername());
 		currentEvaluationEntreprise.setNote(EvaluationEntreprise.getNote());
 		return EvaluationEntrepriseService.save(currentEvaluationEntreprise);
 	}

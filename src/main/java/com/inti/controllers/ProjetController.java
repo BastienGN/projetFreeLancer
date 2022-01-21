@@ -34,25 +34,23 @@ public class ProjetController {
 	}
 	
 	@PostMapping("/projets")
-    public Projet saveProjet(@RequestParam(name = "titre",required = false) String titre, 
-    		@RequestParam(name = "description",required = false) String decription,
-    		@RequestParam(name = "salaire",required = false) double salaire,
-    		@RequestParam(name = "statut",required = false) String statut) {
+    public Projet saveProjet(
+    		@RequestParam(name = "titre",required = false) String titre, 
+    		@RequestParam(name = "statut",required = false) String statut
+    						){
             Projet currentProjet=new Projet();
             currentProjet.setTitre(titre);
-            currentProjet.setDescription(decription);
-            currentProjet.setSalaire(salaire);
             currentProjet.setStatut(statut);
             return projetService.save(currentProjet);
     }
 
 	@PutMapping("/projets/{idP}")
-	public Projet updateProjet(@PathVariable("idP") Long idProjet,
-			@RequestBody Projet projet) {
+	public Projet updateProjet(
+			@PathVariable("idP") Long idProjet,
+			@RequestBody Projet projet
+								) {
 		Projet currentProjet = projetService.findOne(idProjet);
 		currentProjet.setTitre(projet.getTitre());
-        currentProjet.setDescription(projet.getDescription());
-        currentProjet.setSalaire(projet.getSalaire());
         currentProjet.setStatut(projet.getStatut());
 		return projetService.save(currentProjet);
 	}
