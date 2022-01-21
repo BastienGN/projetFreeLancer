@@ -67,5 +67,13 @@ public class CandidatureController {
     {
     	return candidatureService.findCandidatureByUsername(username);
     }
+	
+	@PutMapping("/cands/{idC}")
+	public Candidature updateCandidatureStatut(@PathVariable("idC") Long idCandidature,
+			@RequestParam(name = "statut",required = false) String statut) {
+		Candidature currentCandidature = candidatureService.findOne(idCandidature);
+        currentCandidature.setStatut(statut);
+		return candidatureService.save(currentCandidature);
+	}
 
 }
