@@ -43,6 +43,7 @@ public class Projet implements Serializable{
 		}
 	
 	@OneToMany(mappedBy="projet")
+	@Transient
 	private Set<Candidature> candidature=new HashSet<>();
 		public Set<Candidature> getCandidature() {
 			return candidature;
