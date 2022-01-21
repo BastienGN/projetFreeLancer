@@ -45,4 +45,49 @@ public class UtilisateurService implements IUtilisateurService{
 		return utilisateurRepository.fonction(libelle);
 	}
 
+	@Override
+	public List<Utilisateur> findUtilisateursByCandidature(Long id_candidature) {
+		return utilisateurRepository.fonction2(id_candidature);
+	}
+
+	@Override
+	public List<Utilisateur> findFreelancerByProjet(Long projet_id_projet) {
+		return utilisateurRepository.fonction3(projet_id_projet);
+	}
+
+	@Override
+	public Double findMoyenneByFreelancer(String role) {
+		List<Double> listeNoteFreelancer = utilisateurRepository.fonction4(role);
+		Integer taille = listeNoteFreelancer.size();
+		Double sum=0.0;
+		for (Double note : listeNoteFreelancer)
+		{
+			sum+=note;
+		}
+		return sum/taille;
+	}
+
+	@Override
+	public Double findMoyenneByJobOwner(String role) {
+		List<Double> listeNoteJobOwner = utilisateurRepository.fonction4(role);
+		Integer taille = listeNoteJobOwner.size();
+		Double sum=0.0;
+		for (Double note : listeNoteJobOwner)
+		{
+			sum+=note;
+		}
+		return sum/taille;
+	}
+
+	@Override
+	public Integer nombreFreelancer(String libelle) {
+		return utilisateurRepository.fonction5(libelle);
+	}
+
+	@Override
+	public Integer nombreJobOwner(String libelle) {
+		return utilisateurRepository.fonction5(libelle);
+	}
+
+	
 }

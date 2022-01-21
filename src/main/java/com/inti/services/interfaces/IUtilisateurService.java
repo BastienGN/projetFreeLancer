@@ -16,4 +16,17 @@ public interface IUtilisateurService {
 	Utilisateur findbyUsername(String username);
 	
 	List<Utilisateur> findByRole(String libelle);
+	
+	List<Utilisateur> findUtilisateursByCandidature(Long id_candidature);
+	
+	List<Utilisateur> findFreelancerByProjet(Long projet_id_projet);
+	
+	Double findMoyenneByFreelancer(String libelle);
+	
+	Double findMoyenneByJobOwner(String libelle);
+	
+	Integer nombreFreelancer(String libelle);
+	
+	Integer nombreJobOwner(String libelle);
+	
 }
