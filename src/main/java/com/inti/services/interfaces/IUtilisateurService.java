@@ -25,7 +25,7 @@ public interface IUtilisateurService {
 	
 	Double findMoyenneByJobOwner(String libelle);
 	
-	Integer nombreFreelancer(String libelle);
+	Integer nombreFreelancer();
 	
 	Integer nombreJobOwner(String libelle);
 	

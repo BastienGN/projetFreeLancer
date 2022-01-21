@@ -80,8 +80,8 @@ public class UtilisateurService implements IUtilisateurService{
 	}
 
 	@Override
-	public Integer nombreFreelancer(String libelle) {
-		return utilisateurRepository.fonction5(libelle);
+	public Integer nombreFreelancer() {
+		return utilisateurRepository.fonction5("freelancer");
 	}
 
 	@Override

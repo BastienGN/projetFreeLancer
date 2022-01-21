@@ -173,7 +173,7 @@ public class Utilisateur implements Serializable {
 	
 		
 	@ManyToMany
-	@JoinTable(	name = "Profil_EvaluationCandidat_JobOwner",
+	@JoinTable(	name = "Profil_JobOwner_EvaluationCandidat",
 				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
 				inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
 	private Set<EvaluationCandidat> evaluationCandidats = new HashSet<>();
