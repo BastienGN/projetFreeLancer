@@ -43,7 +43,9 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 
 		//Toutes les notes de tous les freelancers et/ou jobowners
 		final String commande4SQL="SELECT ec.note FROM utilisateur u "
-				+ "INNER JOIN evaluation_candidat ec ON u.username = ec.username_freelancer";
+				+ "INNER JOIN evaluation_candidat ec ON u.username = ec.username_freelancer WHERE u.id_utilisateur IN"
+				+ "(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN"
+				+ "(SELECT id_role FROM role WHERE libelle =?1 ))";
 		
 		@Query(
 				value=commande4SQL,
