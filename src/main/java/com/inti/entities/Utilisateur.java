@@ -100,15 +100,6 @@ public class Utilisateur implements Serializable {
 	
 		
 	//Attributs Freelancers
-	private Integer experience;
-		public Integer getExperience() {
-			return experience;
-		}
-		public void setExperience(Integer experience) {
-			this.experience = experience;
-		}
-		
-		
 	@Lob
 	private byte[] cv;
 		public byte[] getCv() {
@@ -212,8 +203,7 @@ public class Utilisateur implements Serializable {
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
 				+ ", prenomUtilisateur=" + prenomUtilisateur + ", username=" + username + ", password=" + password
-				+ ", adresseMail=" + adresseMail + ", telephone=" + telephone + ", note=" + note + ", experience="
-				+ experience + ", cv=" + Arrays.toString(cv) + ", nomEntreprise=" + nomEntreprise + ", enabled="
+				+ ", adresseMail=" + adresseMail + ", telephone=" + telephone + ", note=" + note + ", cv=" + Arrays.toString(cv) + ", nomEntreprise=" + nomEntreprise + ", enabled="
 				+ enabled + "]";
 	}
 		

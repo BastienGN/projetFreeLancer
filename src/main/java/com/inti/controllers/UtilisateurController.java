@@ -49,7 +49,6 @@ public class UtilisateurController {
     		@RequestParam(name = "password",required = false) String password, 
     		@RequestParam(name = "adresseMail",required = false) String adresseMail,
     		@RequestParam(name = "telephone",required = false) Long telephone, 
-    		@RequestParam(name = "experience",required = false) Integer experience,
     		@RequestParam(name = "cv",required = false) MultipartFile cv,
     		@RequestParam(name = "note",required = false) Integer note,
 			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise
@@ -62,7 +61,6 @@ public class UtilisateurController {
         currentUtilisateur.setPassword(password);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
-        currentUtilisateur.setExperience(experience);
         currentUtilisateur.setCv(cv.getBytes());
         currentUtilisateur.setNote(note);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
@@ -85,7 +83,6 @@ public class UtilisateurController {
     	    @RequestParam(name = "password",required = false) String password, 
     	    @RequestParam(name = "adresseMail",required = false) String adresseMail,
     	    @RequestParam(name = "telephone",required = false) Long telephone, 
-    	    @RequestParam(name = "experience",required = false) Integer experience,
     	    @RequestParam(name = "cv",required = false) MultipartFile cv,
     	    @RequestParam(name = "note",required = false) Integer note,
     		@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise
@@ -98,7 +95,6 @@ public class UtilisateurController {
         currentUtilisateur.setPassword(password);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
-        currentUtilisateur.setExperience(experience);
         currentUtilisateur.setCv(cv.getBytes());
         currentUtilisateur.setNote(note);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
