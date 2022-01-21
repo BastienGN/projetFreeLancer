@@ -85,8 +85,8 @@ public class UtilisateurService implements IUtilisateurService{
 	}
 
 	@Override
-	public Integer nombreJobOwner(String libelle) {
-		return utilisateurRepository.fonction5(libelle);
+	public Integer nombreJobOwner() {
+		return utilisateurRepository.fonction5("jobowner");
 	}
 
 	

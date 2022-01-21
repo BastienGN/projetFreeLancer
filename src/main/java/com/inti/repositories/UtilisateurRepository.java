@@ -14,7 +14,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 	
 	//Selectionner tous les utilisateurs par role (admin, freelancer ou jobowner)
 		final String commandeSQL="SELECT * FROM utilisateur WHERE id_utilisateur IN "
-				+ "	(SELECT id_utilisateur FROM profil WHERE id_role IN"
+				+ "	(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN"
 				+ "(SELECT id_role FROM role WHERE libelle =?1 ))";
 		@Query(
 				value=commandeSQL,
@@ -34,7 +34,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 		final String commande3SQL="SELECT * FROM utilisateur WHERE username IN "
 				+ "(SELECT username FROM candidature WHERE projet_id_projet =?1) "
 				+ "AND id_utilisateur IN "
-				+ "(SELECT id_utilisateur FROM profil WHERE id_role IN "
+				+ "(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN "
 				+ "(SELECT id_role FROM role WHERE libelle ='freelancer'))";
 		@Query(
 				value=commande3SQL,
@@ -43,7 +43,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 
 		//Toutes les notes de tous les freelancers et/ou jobowners
 		final String commande4SQL="SELECT note FROM utilisateur WHERE username IN "
-				+"(SELECT id_utilisateur FROM profil WHERE id_role IN "
+				+"(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN "
 				+ "(SELECT id_role FROM role WHERE libelle =?1 ))";
 		@Query(
 				value=commande4SQL,
@@ -51,7 +51,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 		List<Double> fonction4(String role);
 		
 		final String commande5SQL="SELECT count(*) FROM utilisateur WHERE id_utilisateur IN "
-				+"(SELECT id_utilisateur FROM profil WHERE id_role IN"
+				+"(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN"
 				+"(SELECT id_role FROM role WHERE libelle =?1 ))";
 		@Query(
 				value=commande5SQL,

@@ -123,23 +123,23 @@ public class UtilisateurController {
     	return utilisateurService.findUtilisateursByCandidature(id_candidature);
     }
     
-//    @RequestMapping(value="freelancersprojets/{idF}", method=RequestMethod.GET)
-//    public List<Utilisateur> findFreelancerByProjet(@PathVariable("idF") Long projet_id_projet)
-//    {
-//    	return utilisateurService.findFreelancerByProjet(projet_id_projet);
-//    }
+    @RequestMapping(value="freelancersprojets/{idF}", method=RequestMethod.GET)
+    public List<Utilisateur> findFreelancerByProjet(@PathVariable("idF") Long projet_id_projet)
+    {
+    	return utilisateurService.findFreelancerByProjet(projet_id_projet);
+    }
     
-//    @RequestMapping(value="moyennefreelancer/{idF}", method=RequestMethod.GET)
-//    public Double findMoyenneByFreelancer(@PathVariable("idF") String libelle)
-//    {
-//    	return utilisateurService.findMoyenneByFreelancer(libelle);
-//    }
-//    
-//    @RequestMapping(value="moyennejobowner/{idJ}", method=RequestMethod.GET)
-//    public Double findMoyenneByJobOwner(@PathVariable("idJ") String libelle)
-//    {
-//    	return utilisateurService.findMoyenneByJobOwner(libelle);
-//    }
+    @RequestMapping(value="moyennefreelancer/{idF}", method=RequestMethod.GET)
+    public Double findMoyenneByFreelancer(@PathVariable("idF") String libelle)
+    {
+    	return utilisateurService.findMoyenneByFreelancer(libelle);
+    }
+    
+    @RequestMapping(value="moyennejobowner/{idJ}", method=RequestMethod.GET)
+    public Double findMoyenneByJobOwner(@PathVariable("idJ") String libelle)
+    {
+    	return utilisateurService.findMoyenneByJobOwner(libelle);
+    }
     
     @RequestMapping(value="nombrefreelancer", method=RequestMethod.GET)
     public Integer nombreFreelancer()
@@ -147,9 +147,9 @@ public class UtilisateurController {
     	return utilisateurService.nombreFreelancer();
     }
     
-    @RequestMapping(value="nombrejobowner/{idJ}", method=RequestMethod.GET)
-    public Integer nombreJobOwner(@PathVariable("idJ") String libelle)
+    @RequestMapping(value="nombrejobowner", method=RequestMethod.GET)
+    public Integer nombreJobOwner()
     {
-    	return utilisateurService.nombreJobOwner(libelle);
+    	return utilisateurService.nombreJobOwner();
     }
 }

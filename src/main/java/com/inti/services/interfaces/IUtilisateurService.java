@@ -27,6 +27,6 @@ public interface IUtilisateurService {
 	
 	Integer nombreFreelancer();
 	
-	Integer nombreJobOwner(String libelle);
+	Integer nombreJobOwner();
 	
 }
