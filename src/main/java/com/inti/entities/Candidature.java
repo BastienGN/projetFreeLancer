@@ -39,7 +39,15 @@ public class Candidature implements Serializable{
 			this.lettreMotivation = lettreMotivation;
 		}
 		
-		
+	private String username;
+			public String getUsername() {
+				return username;
+			}
+			public void setUsername(String username) {
+				this.username = username;
+			}
+
+
 	@ManyToOne
 	private Projet projet;
 		public Projet getProjet() {
@@ -51,9 +59,10 @@ public class Candidature implements Serializable{
 		
 		
 	public Candidature() {}
-	public Candidature(Long idCandidature, String statut, String lettreMotivation) {
+	public Candidature(Long idCandidature, String statut, String lettreMotivation, String username) {
 		this.statut = statut;
 		this.lettreMotivation = lettreMotivation;
+		this.username=username;
 	}
 
 	@Override

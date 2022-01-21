@@ -33,11 +33,15 @@ public class CandidatureController {
 	}
 	
 	@PostMapping("/candidatures")
-    public Candidature saveCandidature(@RequestParam(name = "statut",required = false) String statut, 
-    		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation) {
+    public Candidature saveCandidature(
+    		@RequestParam(name = "statut",required = false) String statut, 
+    		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation,
+    		@RequestParam(name = "username",required = false) String username
+    		) {
             Candidature currentCandidature=new Candidature();
             currentCandidature.setStatut(statut);
             currentCandidature.setLettreMotivation(lettreMotivation);
+            currentCandidature.setUsername(username);
             return candidatureService.save(currentCandidature);
     }
 
@@ -47,6 +51,7 @@ public class CandidatureController {
 		Candidature currentCandidature = candidatureService.findOne(idCandidature);
         currentCandidature.setStatut(candidature.getStatut());		
         currentCandidature.setLettreMotivation(candidature.getLettreMotivation());
+        currentCandidature.setUsername(candidature.getUsername());
 		return candidatureService.save(currentCandidature);
 	}
 
