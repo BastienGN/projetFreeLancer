@@ -30,26 +30,26 @@ public class EvaluationCandidat implements Serializable {
 		}
 	
 	
-	private String username;
-		public String getUsername() {
-			return username;
+	private String usernameFreelancer;
+		public String getUsernameFreelancer() {
+			return usernameFreelancer;
 		}
-		public void setUsername(String username) {
-			this.username = username;
+		public void setUsernameFreelancer(String usernameFreelancer) {
+			this.usernameFreelancer = usernameFreelancer;
 		}
 		
 		
 	public EvaluationCandidat() {}
-	public EvaluationCandidat(Integer note, String username) {
+	public EvaluationCandidat(Integer note, String usernameFreelancer) {
 		this.note = note;
-		this.username = username;
+		this.usernameFreelancer = usernameFreelancer;
 	}
 	
 	
 	@Override
 	public String toString() {
 		return "EvaluationCandidate [idEvaluationCandidat=" + idEvaluationCandidat + ", note=" + note
-				+ ", username=" + username + "]";
+				+ ", usernameFreelancer=" + usernameFreelancer + "]";
 	}
 	
 }

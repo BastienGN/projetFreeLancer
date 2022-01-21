@@ -34,7 +34,7 @@ public class EvaluationCandidatController {
 	public EvaluationCandidat updateEvaluationCandidat(@PathVariable(value = "idEC") Long idEvaluationCandidat, @RequestBody EvaluationCandidat evaluationCandidat) {
 		EvaluationCandidat currentEvaluationCandidat = evaluationCandidatService.findOne(idEvaluationCandidat);
 		currentEvaluationCandidat.setNote(evaluationCandidat.getNote());
-		currentEvaluationCandidat.setUsername(evaluationCandidat.getUsername());
+		currentEvaluationCandidat.setUsernameFreelancer(evaluationCandidat.getUsernameFreelancer());
 		return evaluationCandidatService.save(currentEvaluationCandidat);
 	}
 

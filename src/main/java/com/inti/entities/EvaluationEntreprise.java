@@ -28,29 +28,29 @@ public class EvaluationEntreprise {
 		}
 	
 	
-	private String username;
-		public String getUsername() {
-			return username;
+	private String usernameJobowner;
+		public String getUsernameJobowner() {
+			return usernameJobowner;
 		}
-		public void setUsername(String username) {
-			this.username = username;
+		public void setUsernameJobowner(String usernameJobowner) {
+			this.usernameJobowner = usernameJobowner;
 		}
 		
 		
 	//Constructeur( vide+params)
 	public EvaluationEntreprise() {}
 	
-	public EvaluationEntreprise(Integer note, String username) {
+	public EvaluationEntreprise(Integer note, String usernameJobowner) {
 		super();
 		this.note = note;
-		this.username = username;
+		this.usernameJobowner = usernameJobowner;
 	}
 	
 	
 	@Override
 	public String toString() {
 		return "EvaluationEntreprise [idEvaluationEntreprise=" + idEvaluationEntreprise + ", note=" + note
-				+ ", username=" + username + "]";
+				+ ", usernameJobowner=" + usernameJobowner + "]";
 	}
 	
 
