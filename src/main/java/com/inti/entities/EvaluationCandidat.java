@@ -9,53 +9,47 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="table_Evaluation_Candidat")
 public class EvaluationCandidat implements Serializable {
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Long idEvaluationCandidat;
-	private int note;
-	private String description;
+		public Long getIdEvaluationCandidat() {
+			return idEvaluationCandidat;
+		}
+		public void setIdEvaluationCandidat(Long idEvaluationCandidat) {
+			this.idEvaluationCandidat = idEvaluationCandidat;
+		}
 
 
-	public int getNote() {
-		return note;
-	}
-
-	public void setNote(int note) {
+	private Integer note;
+		public Integer getNote() {
+			return note;
+		}
+		public void setNote(Integer note) {
+			this.note = note;
+		}
+	
+	
+	private String username;
+		public String getUsername() {
+			return username;
+		}
+		public void setUsername(String username) {
+			this.username = username;
+		}
+		
+		
+	public EvaluationCandidat() {}
+	public EvaluationCandidat(Integer note, String username) {
 		this.note = note;
+		this.username = username;
 	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Long getIdEvaluationCandidat() {
-		return idEvaluationCandidat;
-	}
-
-	public void setIdEvaluationCandidat(Long idEvaluationCandidat) {
-		this.idEvaluationCandidat = idEvaluationCandidat;
-	}
-
-	public EvaluationCandidat() {
-
-	}
-
-	public EvaluationCandidat(boolean direction, int note, String description) {
-		super();
-		this.note = note;
-		this.description = description;
-	}
-
+	
+	
 	@Override
 	public String toString() {
-		return "EvaluationCandidat [idEvaluationCandidat=" + idEvaluationCandidat + ", note=" + note + ", description=" + description + "]";
+		return "EvaluationCandidate [idEvaluationCandidat=" + idEvaluationCandidat + ", note=" + note
+				+ ", username=" + username + "]";
 	}
-
+	
 }

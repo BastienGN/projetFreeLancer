@@ -10,55 +10,50 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="table_Candidature")
+
 public class Candidature implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long idCandidature;
+		public Long getIdCandidature() {
+			return idCandidature;
+		}
+		public void setIdCandidature(Long idCandidature) {
+			this.idCandidature = idCandidature;
+		}
+		
+		
 	private String statut;
+		public String getStatut() {
+			return statut;
+		}
+		public void setStatut(String statut) {
+			this.statut = statut;
+		}
+		
 	private String lettreMotivation;
-
+		public String getLettreMotivation() {
+			return lettreMotivation;
+		}
+		public void setLettreMotivation(String lettreMotivation) {
+			this.lettreMotivation = lettreMotivation;
+		}
+		
+		
 	@ManyToOne
 	private Projet projet;
-	
-	public Candidature() {
-	}
-
+		public Projet getProjet() {
+			return projet;
+		}
+		public void setProjet(Projet projet) {
+			this.projet = projet;
+		}
+		
+		
+	public Candidature() {}
 	public Candidature(Long idCandidature, String statut, String lettreMotivation) {
 		this.statut = statut;
 		this.lettreMotivation = lettreMotivation;
-	}
-
-	public Long getIdCandidature() {
-		return idCandidature;
-	}
-
-	public void setIdCandidature(Long idCandidature) {
-		this.idCandidature = idCandidature;
-	}
-
-	public String getStatut() {
-		return statut;
-	}
-
-	public void setStatut(String statut) {
-		this.statut = statut;
-	}
-
-	public String getLettreMotivation() {
-		return lettreMotivation;
-	}
-
-	public void setLettreMotivation(String lettreMotivation) {
-		this.lettreMotivation = lettreMotivation;
-	}
-
-	public Projet getProjet() {
-		return projet;
-	}
-
-	public void setProjet(Projet projet) {
-		this.projet = projet;
 	}
 
 	@Override

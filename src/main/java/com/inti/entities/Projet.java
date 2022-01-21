@@ -12,81 +12,56 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="table_projet")
 public class Projet implements Serializable{
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Long idProjet;
+		public Long getIdProjet() {
+			return idProjet;
+		}
+		public void setIdProjet(Long idProjet) {
+			this.idProjet = idProjet;
+		}
+	
+		
 	private String titre;
-	private String description;
-	private double salaire;
+		public String getTitre() {
+			return titre;
+		}
+		public void setTitre(String titre) {
+			this.titre = titre;
+		}
+		
+		
 	private String statut;
+		public String getStatut() {
+			return statut;
+		}
+		public void setStatut(String statut) {
+			this.statut = statut;
+		}
 	
 	@OneToMany(mappedBy="projet")
 	private Set<Candidature> candidature=new HashSet<>();
+		public Set<Candidature> getCandidature() {
+			return candidature;
+		}
+		public void setCandidature(Set<Candidature> candidature) {
+			this.candidature = candidature;
+		}
+		
+		
+	public Projet() {}
+	public Projet(String titre, String statut) {
+		this.titre = titre;
+		this.statut = statut;
+	}
 	
-	public Projet() {
-	}
-
-	public Projet(String titre, String description, double salaire, String statut) {
-		this.titre = titre;
-		this.description = description;
-		this.salaire = salaire;
-		this.statut = statut;
-	}
-
-	public Long getIdProjet() {
-		return idProjet;
-	}
-
-	public void setIdProjet(Long idProjet) {
-		this.idProjet = idProjet;
-	}
-
-	public String getTitre() {
-		return titre;
-	}
-
-	public void setTitre(String titre) {
-		this.titre = titre;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public double getSalaire() {
-		return salaire;
-	}
-
-	public void setSalaire(double salaire) {
-		this.salaire = salaire;
-	}
-
-	public String getStatut() {
-		return statut;
-	}
-
-	public void setStatut(String statut) {
-		this.statut = statut;
-	}
-
-	public Set<Candidature> getCandidature() {
-		return candidature;
-	}
-
-	public void setCandidature(Set<Candidature> candidature) {
-		this.candidature = candidature;
-	}
-
 	@Override
 	public String toString() {
-		return "Projet [idProjet=" + idProjet + ", titre=" + titre + ", description=" + description + ", salaire="
-				+ salaire + ", statut=" + statut + "]";
+		return "Projet [idProjet=" + idProjet + ", titre=" + titre + ", statut=" + statut + "]";
 	}
+
+
 	
 }

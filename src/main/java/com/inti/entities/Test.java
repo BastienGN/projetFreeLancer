@@ -7,51 +7,38 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="table_Test")
 public class Test 
 {
 	@Id
 	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	private Long idTest;
-	private String description;
-	private Boolean resultat;
-	
-	
+		public Long getIdTest() {
+			return idTest;
+		}
+		public void setIdTest(Long idTest) {
+			this.idTest = idTest;
+		}
+		
+		
+	private String resultat;
+		public String getResultat() {
+			return resultat;
+		}
+		public void setResultat(String resultat) {
+			this.resultat = resultat;
+		}
+		
+		
 	// Constructeur
-	public Test(String description, Boolean resultat) {
-		super();
-		this.description = description;
-		this.resultat = resultat;
-	}
-	public Test() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	//Setter Getter
-	public Long getIdTest() {
-		return idTest;
-	}
-	public void setIdTest(Long idTest) {
-		this.idTest = idTest;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	public Boolean getResultat() {
-		return resultat;
-	}
-	public void setResultat(Boolean resultat) {
+	public Test() {}
+	public Test(String resultat) {
 		this.resultat = resultat;
 	}
 	
-	//toString
+	
 	@Override
 	public String toString() {
-		return "Test [idTest=" + idTest + ", description=" + description + ", resultat=" + resultat + "]";
+		return "Test [idTest=" + idTest + ", description=" +  ", resultat=" + resultat + "]";
 	}
 	
 	

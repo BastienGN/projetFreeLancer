@@ -9,35 +9,28 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="table_Role")
 public class Role implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idRole;
+		public Long getIdRole() {
+			return idRole;
+		}
+		public void setIdRole(Long idRole) {
+			this.idRole = idRole;
+		}
+	
 	private String libelle;
-
-	public Role() {
-	}
-
-	public Role(String libelle) {
-		this.libelle = libelle;
-	}
-
-	public Long getIdRole() {
-		return idRole;
-	}
-
-	public void setIdRole(Long idRole) {
-		this.idRole = idRole;
-	}
-
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
+		public String getLibelle() {
+			return libelle;
+		}
+		public void setLibelle(String libelle) {
+			this.libelle = libelle;
+		}
+		
+	public Role() {}
+	public Role(String libelle) {this.libelle = libelle;}
 
 	@Override
 	public String toString() {
