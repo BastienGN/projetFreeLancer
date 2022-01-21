@@ -152,4 +152,5 @@ public class UtilisateurController {
     {
     	return utilisateurService.nombreJobOwner();
     }
+    
 }

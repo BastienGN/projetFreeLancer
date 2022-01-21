@@ -12,4 +12,6 @@ public interface IEvaluationCandidatService {
 	EvaluationCandidat save(EvaluationCandidat evaluationCandidat);
 
 	void delete(Long idEvaluationCandidat);
+	
+	List<Double> findAllNoteByUsername(String username);
 }

@@ -46,4 +46,9 @@ public class EvaluationCandidatController {
 	public void deleteEvaluationCandidat(@PathVariable(value = "idR") Long idEvaluationCandidat) {
 		evaluationCandidatService.delete(idEvaluationCandidat);
 	}
+	
+	@RequestMapping(value = "ec/{username}", method = RequestMethod.GET)
+	public List<Double> findAllNote(@PathVariable(value ="username") String username) {
+		return evaluationCandidatService.findAllNoteByUsername(username);
+	}
 }

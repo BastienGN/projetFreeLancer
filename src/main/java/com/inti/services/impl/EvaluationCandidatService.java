@@ -34,4 +34,9 @@ public class EvaluationCandidatService implements IEvaluationCandidatService{
 		evaluationCandidatRepository.deleteById(idEvaluationCandidat);		
 	}
 
+	@Override
+	public List<Double> findAllNoteByUsername(String username) {
+		return evaluationCandidatRepository.fonction(username);
+	}
+
 }
