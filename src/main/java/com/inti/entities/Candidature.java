@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 
@@ -49,6 +50,7 @@ public class Candidature implements Serializable{
 
 
 	@ManyToOne
+	@Transient
 	private Projet projet;
 		public Projet getProjet() {
 			return projet;

@@ -35,4 +35,9 @@ public class CandidatureService implements ICandidatureService{
 		candidatureRepository.deleteById(idCandidature);
 	}
 	
+	@Override
+	public List<Candidature> findCandidatureByUsername(String username) {
+		return candidatureRepository.fonction2(username);
+	}
+	
 }
