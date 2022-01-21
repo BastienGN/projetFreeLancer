@@ -56,8 +56,8 @@ public class UtilisateurService implements IUtilisateurService{
 	}
 
 	@Override
-	public Double findMoyenneByFreelancer(String role) {
-		List<Double> listeNoteFreelancer = utilisateurRepository.fonction4(role);
+	public Double findMoyenneByFreelancer(String username) {
+		List<Double> listeNoteFreelancer = utilisateurRepository.fonction4(username);
 		Integer taille = listeNoteFreelancer.size();
 		Double sum=0.0;
 		for (Double note : listeNoteFreelancer)
@@ -68,8 +68,8 @@ public class UtilisateurService implements IUtilisateurService{
 	}
 
 	@Override
-	public Double findMoyenneByJobOwner(String role) {
-		List<Double> listeNoteJobOwner = utilisateurRepository.fonction4(role);
+	public Double findMoyenneByJobOwner(String username) {
+		List<Double> listeNoteJobOwner = utilisateurRepository.fonction4b(username);
 		Integer taille = listeNoteJobOwner.size();
 		Double sum=0.0;
 		for (Double note : listeNoteJobOwner)

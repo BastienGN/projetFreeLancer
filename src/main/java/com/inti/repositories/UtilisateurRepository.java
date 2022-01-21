@@ -41,16 +41,25 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 				nativeQuery = true)
 		List<Utilisateur> fonction3(Long projet_id_projet);
 
-		//Toutes les notes de tous les freelancers et/ou jobowners
+		//Toutes les notes de tous les freelancers
 		final String commande4SQL="SELECT ec.note FROM utilisateur u "
-				+ "INNER JOIN evaluation_candidat ec ON u.username = ec.username_freelancer WHERE u.id_utilisateur IN"
-				+ "(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN"
-				+ "(SELECT id_role FROM role WHERE libelle =?1 ))";
+				+ "INNER JOIN evaluation_candidat ec ON u.username = ec.username_freelancer "
+				+ "WHERE u.username =?1";
 		
 		@Query(
 				value=commande4SQL,
 				nativeQuery = true)
 		List<Double> fonction4(String role);
+		
+		//Toutes les notes de tous les jobowners
+				final String commande4bSQL="SELECT ee.note FROM utilisateur u "
+						+ "INNER JOIN evaluation_entreprise ee ON u.username = ee.username_jobowner "
+						+ "WHERE u.username =?1";
+				
+				@Query(
+						value=commande4bSQL,
+						nativeQuery = true)
+				List<Double> fonction4b(String role);
 		
 		final String commande5SQL="SELECT count(*) FROM utilisateur WHERE id_utilisateur IN "
 				+"(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN"

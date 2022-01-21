@@ -21,9 +21,9 @@ public interface IUtilisateurService {
 	
 	List<Utilisateur> findFreelancerByProjet(Long projet_id_projet);
 	
-	Double findMoyenneByFreelancer(String libelle);
+	Double findMoyenneByFreelancer(String username);
 	
-	Double findMoyenneByJobOwner(String libelle);
+	Double findMoyenneByJobOwner(String username);
 	
 	Integer nombreFreelancer();
 	
