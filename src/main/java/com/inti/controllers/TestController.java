@@ -44,13 +44,13 @@ public class TestController {
 		return TestService.save(currentTest);
 	}
 	
-	@RequestMapping(value = "tests/{idT}", method = RequestMethod.PUT)
+	/*@RequestMapping(value = "tests/{idT}", method = RequestMethod.PUT)
 	public Test updateTest(@PathVariable(value = "idT") Long idTest, 
 			@RequestParam(name = "resultat",required = false) String resultat) {
 		Test currentTest = TestService.findOne(idTest);
 		currentTest.setResultat(resultat);
 		return TestService.save(currentTest);
-	}
+	}*/
 
 	@RequestMapping(value = "tests/{idT}", method = RequestMethod.DELETE)
 	public void deleteTest(@PathVariable(value = "idT") Long idTest) {
