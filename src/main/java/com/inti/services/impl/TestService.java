@@ -34,4 +34,9 @@ public class TestService implements ITestService{
 	public void delete(Long idTest) {
 		TestRepository.deleteById(idTest);		
 	}
+	
+	@Override
+    public void updateResultatTest(String resultat, Long id_test) {
+        TestRepository.fonction(resultat,id_test);
+    }
 }

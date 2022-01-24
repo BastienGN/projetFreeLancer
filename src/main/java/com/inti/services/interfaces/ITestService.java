@@ -12,4 +12,6 @@ public interface ITestService {
 	Test save(Test Test);
 
 	void delete(Long idTest);
+	
+	void updateResultatTest(String resultat, Long idTest);
 }
