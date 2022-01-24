@@ -39,5 +39,10 @@ public class CandidatureService implements ICandidatureService{
 	public List<Candidature> findCandidatureByUsername(String username) {
 		return candidatureRepository.fonction2(username);
 	}
+
+	@Override
+	public void updateStatutCandidatureByIdCandidature(String statut, Long idCandidature) {
+		candidatureRepository.fonction3(statut, idCandidature);
+	}
 	
 }

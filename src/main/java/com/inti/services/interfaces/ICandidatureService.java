@@ -14,5 +14,6 @@ public interface ICandidatureService {
 	void delete(Long idCandidature);
 	
 	List<Candidature> findCandidatureByUsername(String username);
-
+	
+	void updateStatutCandidatureByIdCandidature(String statut,Long idCandidature);
 }
