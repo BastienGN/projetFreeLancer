@@ -61,7 +61,9 @@ public class UtilisateurController {
         currentUtilisateur.setPassword(password);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
-        //currentUtilisateur.setCv(cv.getBytes());
+        if (cv != null) {
+            currentUtilisateur.setCv(cv.getBytes());
+        }
         currentUtilisateur.setNote(note);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
 		utilisateurService.save(currentUtilisateur);
@@ -95,7 +97,9 @@ public class UtilisateurController {
         currentUtilisateur.setPassword(password);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
-        //currentUtilisateur.setCv(cv.getBytes());
+        if (cv != null) {
+            currentUtilisateur.setCv(cv.getBytes());
+        }
         currentUtilisateur.setNote(note);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
 		utilisateurService.save(currentUtilisateur);
