@@ -13,6 +13,8 @@ public interface ICandidatureService {
 
 	void delete(Long idCandidature);
 	
+	Integer updateCandidature(String lettreMotivation,String statut,String username,Long projet_id_projet,Long id_candidature);
+	
 	List<Candidature> findCandidatureByUsername(String username);
 	
 	void updateStatutCandidatureByIdCandidature(String statut,Long idCandidature);

@@ -12,4 +12,8 @@ public interface IEvaluationEntrepriseService {
 	EvaluationEntreprise save(EvaluationEntreprise EvaluationEntreprise);
 
 	void delete(Long idEvaluationEntreprise);
+	
+	Integer nbEvalEntreprise();
+	
+	void ajoutEvalEntreprise(Integer note,String usernameJobowner,Long idFreelancer);
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inti.entities.Candidature;
+import com.inti.entities.Projet;
 import com.inti.services.interfaces.ICandidatureService;
 
 @RestController
@@ -38,12 +39,14 @@ public class CandidatureController {
     public Candidature saveCandidature(
     		@RequestParam(name = "statut",required = false) String statut, 
     		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation,
-    		@RequestParam(name = "username",required = false) String username
+    		@RequestParam(name = "username",required = false) String username,
+    		@RequestParam(name ="projet",required=false) Projet projet
     		) {
             Candidature currentCandidature=new Candidature();
             currentCandidature.setStatut(statut);
             currentCandidature.setLettreMotivation(lettreMotivation);
             currentCandidature.setUsername(username);
+            currentCandidature.setProjet(projet);
             return candidatureService.save(currentCandidature);
     }
 
@@ -80,5 +83,17 @@ public class CandidatureController {
 	public void updateStatutCandidature(@PathVariable("statut")String statut,@PathVariable("idC") Long idCandidature) 
 	{
 		candidatureService.updateStatutCandidatureByIdCandidature(statut, idCandidature);
+	}
+	@PutMapping("/cands/{idC}")
+	public Integer updateCandidature(
+			@PathVariable("idC") Long idCandidature, 
+			@RequestParam(name = "statut",required = false) String statut, 
+    		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation,
+    		@RequestParam(name = "username",required = false) String username,
+    		@RequestParam(name ="projet_id_projet",required=false) Long projet_id_projet
+			)
+	{
+		return candidatureService.updateCandidature(lettreMotivation, statut, username, projet_id_projet, idCandidature);
+	
 	}
 }

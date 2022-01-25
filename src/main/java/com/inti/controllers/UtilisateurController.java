@@ -61,7 +61,7 @@ public class UtilisateurController {
         currentUtilisateur.setPassword(password);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
-        currentUtilisateur.setCv(cv.getBytes());
+        //currentUtilisateur.setCv(cv.getBytes());
         currentUtilisateur.setNote(note);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
 		utilisateurService.save(currentUtilisateur);
@@ -76,7 +76,7 @@ public class UtilisateurController {
 
     @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
     public String updateUtilisateur(
-    		@RequestParam(name = "idUtilisateur",required = false) Long idUtilisateur,
+    		@PathVariable(name = "idUtilisateur") Long idUtilisateur,
     		@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
     	    @RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
     	    @RequestParam(name = "username",required = false) String username,
@@ -95,7 +95,7 @@ public class UtilisateurController {
         currentUtilisateur.setPassword(password);
         currentUtilisateur.setAdresseMail(adresseMail);
         currentUtilisateur.setTelephone(telephone);
-        currentUtilisateur.setCv(cv.getBytes());
+        //currentUtilisateur.setCv(cv.getBytes());
         currentUtilisateur.setNote(note);
         currentUtilisateur.setNomEntreprise(nomEntreprise);
 		utilisateurService.save(currentUtilisateur);

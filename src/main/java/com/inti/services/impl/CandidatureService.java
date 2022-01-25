@@ -44,5 +44,11 @@ public class CandidatureService implements ICandidatureService{
 	public void updateStatutCandidatureByIdCandidature(String statut, Long idCandidature) {
 		candidatureRepository.fonction3(statut, idCandidature);
 	}
+
+	@Override
+	public Integer updateCandidature(String lettreMotivation, String statut, String username, Long projet_id_projet,
+			Long id_candidature) {
+		return candidatureRepository.updateCandidature(lettreMotivation, statut, username, projet_id_projet, id_candidature);	
+	}
 	
 }

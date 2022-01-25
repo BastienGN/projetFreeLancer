@@ -13,7 +13,15 @@ import com.inti.entities.Candidature;
 
 @Repository
 public interface CandidatureRepository extends JpaRepository<Candidature, Long> {
-	
+	//redefinition de la commande update
+		final String commandeSQL="UPDATE candidature SET lettre_motivation=?1 ,statut=?2, username=?3,projet_id_projet=?4 WHERE id_candidature=?5";
+		@Query(
+				value=commandeSQL,
+				nativeQuery = true)
+		@Modifying
+	    @Transactional
+	    Integer updateCandidature(String lettreMotivation,String statut,String username,Long projet_id_projet,Long id_candidature);
+		
 	//Trouver toutes les candidatures à partir d'un nom de freelancer
 		final String commande2SQL="SELECT * FROM candidature WHERE username =?1";
 		@Query(
