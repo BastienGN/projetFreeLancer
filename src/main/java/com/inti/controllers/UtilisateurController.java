@@ -73,6 +73,43 @@ public class UtilisateurController {
          if (utilisateur.getAdresseMail() !=null) {
          	currentUtilisateur.setAdresseMail(utilisateur.getAdresseMail());
          }
+         if(utilisateur.getTelephone() !=null) 
+         {
+        	 currentUtilisateur.setTelephone(utilisateur.getTelephone());
+         }
+         if(utilisateur.getNote() !=null) 
+         {
+        	 currentUtilisateur.setNote(utilisateur.getNote());
+         }
+         if(utilisateur.getCv()!= null) 
+         {
+        	 currentUtilisateur.setCv(utilisateur.getCv());
+         }
+         if(utilisateur.getNomEntreprise()!=null) 
+         {
+        	 currentUtilisateur.setNomEntreprise(utilisateur.getNomEntreprise());
+         }
+         if(utilisateur.getRoles()!=null) 
+         {
+        	 currentUtilisateur.setRoles(utilisateur.getRoles());
+         }
+         if(utilisateur.getEvalutationsEntreprises()!=null) 
+         {
+        	 currentUtilisateur.setEvalutationsEntreprises(utilisateur.getEvalutationsEntreprises());
+         }
+         if(utilisateur.getEvaluationCandidats()!=null) 
+         {
+        	 currentUtilisateur.setEvaluationCandidats(utilisateur.getEvaluationCandidats());
+         }
+         if(utilisateur.getTests()!=null) 
+         {
+        	 currentUtilisateur.setTests(utilisateur.getTests());
+         }
+         if(utilisateur.getProjets()!=null) 
+         {
+        	 currentUtilisateur.setProjets(utilisateur.getProjets());
+         }
+         
          return utilisateurService.save(currentUtilisateur);
     }
 //    @RequestMapping(value = "utilisateurs", method = RequestMethod.POST)

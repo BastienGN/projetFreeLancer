@@ -5,8 +5,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
-
+import java.util.Set;import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -130,7 +129,7 @@ public class Utilisateur implements Serializable {
 		
 		
 	//Relation
-	@ManyToMany
+	@ManyToMany()
 	@JoinTable(	name = "Profil_Utilisateur_Role",
 				joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur"),
 				inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
