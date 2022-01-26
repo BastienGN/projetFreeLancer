@@ -49,7 +49,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 		@Query(
 				value=commande4SQL,
 				nativeQuery = true)
-		List<Double> fonction4(String role);
+		List<Double> fonction4(String username);
 		
 		//Toutes les notes de tous les jobowners
 				final String commande4bSQL="SELECT ee.note FROM utilisateur u "
@@ -59,7 +59,7 @@ public interface UtilisateurRepository extends JpaRepository<Utilisateur, Long>{
 				@Query(
 						value=commande4bSQL,
 						nativeQuery = true)
-				List<Double> fonction4b(String role);
+				List<Double> fonction4b(String username);
 		
 		final String commande5SQL="SELECT count(*) FROM utilisateur WHERE id_utilisateur IN "
 				+"(SELECT id_utilisateur FROM profil_utilisateur_role WHERE id_role IN"
