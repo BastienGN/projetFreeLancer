@@ -29,7 +29,7 @@ public interface CandidatureRepository extends JpaRepository<Candidature, Long> 
 				nativeQuery = true)
 		List<Candidature> fonction2(String username);
 		
-	// uodate le status avec le mot voulu grâce à l'id de la candidature
+	// update le status avec le mot voulu grâce à l'id de la candidature
 		final String commande3SQL="UPDATE candidature SET candidature.statut=?1 where candidature.id_candidature=?2";
 		@Modifying()
 		@Transactional

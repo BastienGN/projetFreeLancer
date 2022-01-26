@@ -38,13 +38,4 @@ public class EvaluationEntrepriseService implements IEvaluationEntrepriseService
 	public Integer nbEvalEntreprise() {
 		return EvaluationEntrepriseRepository.fonction2();
 	}
-
-	@Override
-	public void ajoutEvalEntreprise(Integer note, String usernameJobowner, Long idFreelancer) {
-		Integer nbEvalEntreprise=EvaluationEntrepriseRepository.fonction2();
-		
-		Long idEvalEntreprise=new Long(nbEvalEntreprise)+1;
-		EvaluationEntrepriseRepository.fonction(note, usernameJobowner, idFreelancer,idEvalEntreprise);
-		
-	}
 }

@@ -15,5 +15,4 @@ public interface IEvaluationEntrepriseService {
 	
 	Integer nbEvalEntreprise();
 	
-	void ajoutEvalEntreprise(Integer note,String usernameJobowner,Long idFreelancer);
 }

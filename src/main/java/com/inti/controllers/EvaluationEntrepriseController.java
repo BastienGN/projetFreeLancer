@@ -51,12 +51,4 @@ public class EvaluationEntrepriseController {
 	public void deleteEvaluationEntreprise(@PathVariable(value = "idEE") Long idEvaluationEntreprise) {
 		EvaluationEntrepriseService.delete(idEvaluationEntreprise);
 	}
-	@PostMapping(value = "/evalE")
-	public void ajoutEvalEntreprise(
-			@RequestParam(name = "note",required = false)Integer note, 
-			@RequestParam(name = "usernameJobowner",required = false)String usernameJobowner, 
-			@RequestParam(name = "idFreelancer",required = false)Long idFreelancer) 
-	{
-		EvaluationEntrepriseService.ajoutEvalEntreprise(note, usernameJobowner, idFreelancer);
-	}
 }
