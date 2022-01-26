@@ -27,7 +27,7 @@ public class ProjetController {
 	public List<Projet> findAll() {
 		return projetService.findAll();
 	}
-
+	
 	@GetMapping("/projets/{idP}")
 	public Projet findOne(@PathVariable(value = "idP") Long idProjet) {
 		return projetService.findOne(idProjet);
@@ -35,26 +35,27 @@ public class ProjetController {
 	
 	@PostMapping("/projets")
     public Projet saveProjet(
-    		@RequestParam(name = "titre",required = false) String titre, 
-    		@RequestParam(name = "statut",required = false) String statut
-    						){
-            Projet currentProjet=new Projet();
-            currentProjet.setTitre(titre);
-            currentProjet.setStatut(statut);
-            return projetService.save(currentProjet);
+    		@RequestBody Projet projet){
+            return projetService.save(projet);
     }
-
+	
 	@PutMapping("/projets/{idP}")
 	public Projet updateProjet(
 			@PathVariable("idP") Long idProjet,
-			@RequestBody Projet projet
-								) {
+			@RequestBody Projet projet) {
 		Projet currentProjet = projetService.findOne(idProjet);
-		currentProjet.setTitre(projet.getTitre());
-        currentProjet.setStatut(projet.getStatut());
+		if (projet.getTitre() != null){
+			currentProjet.setTitre(projet.getTitre());
+		}
+		if (projet.getStatut() != null){
+			currentProjet.setStatut(projet.getStatut());
+		}
+		if (projet.getUtilisateurs() != null){
+			currentProjet.setUtilisateurs(projet.getUtilisateurs());
+		}
 		return projetService.save(currentProjet);
 	}
-
+	
 	@DeleteMapping("/projets/{idProjet}")
 	public void deleteProjet(@PathVariable("idProjet") Long idProjet) {
 		projetService.delete(idProjet);

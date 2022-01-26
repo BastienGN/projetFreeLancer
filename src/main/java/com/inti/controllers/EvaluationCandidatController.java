@@ -37,8 +37,15 @@ public class EvaluationCandidatController {
 	@RequestMapping(value = "evaluationCandidats/{idEC}", method = RequestMethod.PUT)
 	public EvaluationCandidat updateEvaluationCandidat(@PathVariable(value = "idEC") Long idEvaluationCandidat, @RequestBody EvaluationCandidat evaluationCandidat) {
 		EvaluationCandidat currentEvaluationCandidat = evaluationCandidatService.findOne(idEvaluationCandidat);
-		currentEvaluationCandidat.setNote(evaluationCandidat.getNote());
-		currentEvaluationCandidat.setUsernameFreelancer(evaluationCandidat.getUsernameFreelancer());
+		if (evaluationCandidat.getNote() != null) {
+			currentEvaluationCandidat.setNote(evaluationCandidat.getNote());
+		}
+		if (evaluationCandidat.getUsernameFreelancer() != null) {
+			currentEvaluationCandidat.setUsernameFreelancer(evaluationCandidat.getUsernameFreelancer());
+		}
+		if (evaluationCandidat.getUtilisateurs() != null) {
+			currentEvaluationCandidat.setUtilisateurs(evaluationCandidat.getUtilisateurs());
+		}
 		return evaluationCandidatService.save(currentEvaluationCandidat);
 	}
 

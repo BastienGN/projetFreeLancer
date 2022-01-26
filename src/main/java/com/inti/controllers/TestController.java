@@ -40,8 +40,15 @@ public class TestController {
 	@RequestMapping(value = "tests/{idT}", method = RequestMethod.PUT)
 	public Test updateTest(@PathVariable(value = "idT") Long idTest, @RequestBody Test Test) {
 		Test currentTest = TestService.findOne(idTest);
-		currentTest.setDescription(Test.getDescription());
-		currentTest.setResultat(Test.getResultat());
+		if(Test.getDescription() != null) {
+			currentTest.setDescription(Test.getDescription());
+		}
+		if(Test.getResultat() != null) {
+			currentTest.setResultat(Test.getResultat());
+		}
+		if(Test.getUtilisateurs() != null) {
+			currentTest.setUtilisateurs(Test.getUtilisateurs());
+		}
 		return TestService.save(currentTest);
 	}
 	

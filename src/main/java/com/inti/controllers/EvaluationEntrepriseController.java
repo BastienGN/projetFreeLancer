@@ -42,6 +42,8 @@ public class EvaluationEntrepriseController {
 		EvaluationEntreprise currentEvaluationEntreprise = EvaluationEntrepriseService.findOne(idEvaluationEntreprise);
 		currentEvaluationEntreprise.setUsernameJobowner(EvaluationEntreprise.getUsernameJobowner());
 		currentEvaluationEntreprise.setNote(EvaluationEntreprise.getNote());
+		//
+		currentEvaluationEntreprise.setUtilisateurs(EvaluationEntreprise.getUtilisateurs());
 		return EvaluationEntrepriseService.save(currentEvaluationEntreprise);
 	}
 

@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -53,11 +56,31 @@ public class Projet implements Serializable{
 		}
 		
 		
+		@ManyToMany
+		@JoinTable(	name = "Profil_Projet_JobOwner", 
+					joinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"), 
+					inverseJoinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"))
+		private Set<Utilisateur> utilisateurs = new HashSet<>();
+	public Set<Utilisateur> getUtilisateurs() {
+			return utilisateurs;
+		}
+		public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+			this.utilisateurs = utilisateurs;
+		}
+		
+		
 	public Projet() {}
 	public Projet(String titre, String statut) {
 		this.titre = titre;
 		this.statut = statut;
 	}
+	public Projet(String titre, String statut, Set<Utilisateur> utilisateurs) {
+		super();
+		this.titre = titre;
+		this.statut = statut;
+		this.utilisateurs = utilisateurs;
+	}
+	
 	
 	@Override
 	public String toString() {

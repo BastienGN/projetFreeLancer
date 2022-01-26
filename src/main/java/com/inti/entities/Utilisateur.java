@@ -142,90 +142,106 @@ public class Utilisateur implements Serializable {
 		}
 	
 		
-	@ManyToMany
-	@JoinTable(	name = "Profil_Freelancer_EvaluationEntreprise", 
-				joinColumns = @JoinColumn(name = "id_freelancer", 
-				referencedColumnName = "idUtilisateur"), 
-				inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntreprise"))
-	private Set<EvaluationEntreprise> evalutationsEntreprises = new HashSet<>();
-		public Set<EvaluationEntreprise> getEvalutationsEntreprises() {
-			return evalutationsEntreprises;
-		}
-		public void setEvalutationsEntreprises(Set<EvaluationEntreprise> evalutationsEntreprises) {
-			this.evalutationsEntreprises = evalutationsEntreprises;
-		}
+//	@ManyToMany
+//	@JoinTable(	name = "Profil_Freelancer_EvaluationEntreprise", 
+//				joinColumns = @JoinColumn(name = "id_freelancer", 
+//				referencedColumnName = "idUtilisateur"), 
+//				inverseJoinColumns = @JoinColumn(name = "id_EvaluationEntreprise", referencedColumnName = "idEvaluationEntreprise"))
+//	private Set<EvaluationEntreprise> evalutationsEntreprises = new HashSet<>();
+//		public Set<EvaluationEntreprise> getEvalutationsEntreprises() {
+//			return evalutationsEntreprises;
+//		}
+//		public void setEvalutationsEntreprises(Set<EvaluationEntreprise> evalutationsEntreprises) {
+//			this.evalutationsEntreprises = evalutationsEntreprises;
+//		}
 	
 		
-	@ManyToMany
-	@JoinTable(	name = "Profil_Freelancer_Test",
-				joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
-				inverseJoinColumns = @JoinColumn(name = "id_test", referencedColumnName = "idTest"))
-	private Set<Test> tests = new HashSet<>();
-		public Set<Test> getTests() {
-			return tests;
-		}
-		public void setTests(Set<Test> tests) {
-			this.tests = tests;
-		}
+//	@ManyToMany
+//	@JoinTable(	name = "Profil_Freelancer_Test",
+//				joinColumns = @JoinColumn(name = "id_freelancer", referencedColumnName = "idUtilisateur"), 
+//				inverseJoinColumns = @JoinColumn(name = "id_test", referencedColumnName = "idTest"))
+//	private Set<Test> tests = new HashSet<>();
+//		public Set<Test> getTests() {
+//			return tests;
+//		}
+//		public void setTests(Set<Test> tests) {
+//			this.tests = tests;
+//		}
 	
 		
-	@ManyToMany
-	@JoinTable(	name = "Profil_JobOwner_EvaluationCandidat",
-				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
-				inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
-	private Set<EvaluationCandidat> evaluationCandidats = new HashSet<>();
-		public Set<EvaluationCandidat> getEvaluationCandidats() {
-			return evaluationCandidats;
-		}
-		public void setEvaluationCandidats(Set<EvaluationCandidat> evaluationCandidats) {
-			this.evaluationCandidats = evaluationCandidats;
-		}
+//	@ManyToMany
+//	@JoinTable(	name = "Profil_JobOwner_EvaluationCandidat",
+//				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+//				inverseJoinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"))
+//	private Set<EvaluationCandidat> evaluationCandidats = new HashSet<>();
+//		public Set<EvaluationCandidat> getEvaluationCandidats() {
+//			return evaluationCandidats;
+//		}
+//		public void setEvaluationCandidats(Set<EvaluationCandidat> evaluationCandidats) {
+//			this.evaluationCandidats = evaluationCandidats;
+//		}
 	
 		
-	@ManyToMany
-	@JoinTable(	name = "Profil_JobOwner_Projet", 
-				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
-				inverseJoinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"))
-	private Set<Projet> projets = new HashSet<>();
-		public Set<Projet> getProjets() {
-		return projets;
-	}
-		public void setProjets(Set<Projet> projets) {
-	this.projets = projets;
-}
+//	@ManyToMany
+//	@JoinTable(	name = "Profil_JobOwner_Projet", 
+//				joinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"), 
+//				inverseJoinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"))
+//	private Set<Projet> projets = new HashSet<>();
+//		public Set<Projet> getProjets() {
+//		return projets;
+//	}
+//		public void setProjets(Set<Projet> projets) {
+//	this.projets = projets;
+//}
 	
 		
 	public Utilisateur() {}
 	
 	
-	public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String username, String password,
-			String adresseMail, Long telephone, Integer note, byte[] cv, String nomEntreprise, boolean enabled,
-			Set<Role> roles, Set<EvaluationEntreprise> evalutationsEntreprises, Set<Test> tests,
-			Set<EvaluationCandidat> evaluationCandidats, Set<Projet> projets) {
-		this.nomUtilisateur = nomUtilisateur;
-		this.prenomUtilisateur = prenomUtilisateur;
-		this.username = username;
-		this.password = password;
-		this.adresseMail = adresseMail;
-		this.telephone = telephone;
-		this.note = note;
-		this.cv = cv;
-		this.nomEntreprise = nomEntreprise;
-		this.enabled = enabled;
-		this.roles = roles;
-		this.evalutationsEntreprises = evalutationsEntreprises;
-		this.tests = tests;
-		this.evaluationCandidats = evaluationCandidats;
-		this.projets = projets;
-	}
+//	public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String username, String password,
+//			String adresseMail, Long telephone, Integer note, byte[] cv, String nomEntreprise, boolean enabled,
+//			Set<Role> roles, Set<EvaluationEntreprise> evalutationsEntreprises, Set<Test> tests,
+//			Set<EvaluationCandidat> evaluationCandidats, Set<Projet> projets) {
+//		this.nomUtilisateur = nomUtilisateur;
+//		this.prenomUtilisateur = prenomUtilisateur;
+//		this.username = username;
+//		this.password = password;
+//		this.adresseMail = adresseMail;
+//		this.telephone = telephone;
+//		this.note = note;
+//		this.cv = cv;
+//		this.nomEntreprise = nomEntreprise;
+//		this.enabled = enabled;
+//		this.roles = roles;
+//		//this.evalutationsEntreprises = evalutationsEntreprises;
+//		this.tests = tests;
+//		this.evaluationCandidats = evaluationCandidats;
+//		this.projets = projets;
+//	}
 	
-	
-	@Override
+public Utilisateur(Long idUtilisateur, String nomUtilisateur, String prenomUtilisateur, String username,
+		String password, String adresseMail, Long telephone, Integer note, byte[] cv, String nomEntreprise,
+		boolean enabled, Set<Role> roles) {
+	super();
+	this.idUtilisateur = idUtilisateur;
+	this.nomUtilisateur = nomUtilisateur;
+	this.prenomUtilisateur = prenomUtilisateur;
+	this.username = username;
+	this.password = password;
+	this.adresseMail = adresseMail;
+	this.telephone = telephone;
+	this.note = note;
+	this.cv = cv;
+	this.nomEntreprise = nomEntreprise;
+	this.enabled = enabled;
+	this.roles = roles;
+}
+
+		@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
 				+ ", prenomUtilisateur=" + prenomUtilisateur + ", username=" + username + ", password=" + password
 				+ ", adresseMail=" + adresseMail + ", telephone=" + telephone + ", note=" + note + ", cv=" + Arrays.toString(cv) + ", nomEntreprise=" + nomEntreprise + ", enabled="
 				+ enabled + "]";
 	}
-		
 }

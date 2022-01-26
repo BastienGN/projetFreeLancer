@@ -1,11 +1,16 @@
 package com.inti.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -38,11 +43,29 @@ public class EvaluationCandidat implements Serializable {
 			this.usernameFreelancer = usernameFreelancer;
 		}
 		
+		@ManyToMany
+		@JoinTable(	name = "Profil_EvaluationCandidat_JobOwner",
+					joinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"), 
+					inverseJoinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"))
+		private Set<Utilisateur> utilisateurs = new HashSet<>();
+	public Set<Utilisateur> getUtilisateurs() {
+			return utilisateurs;
+		}
+		public void setUtilisateurs(Set<Utilisateur> utilisateurs) {
+			this.utilisateurs = utilisateurs;
+		}
+		
 		
 	public EvaluationCandidat() {}
 	public EvaluationCandidat(Integer note, String usernameFreelancer) {
 		this.note = note;
 		this.usernameFreelancer = usernameFreelancer;
+	}
+	public EvaluationCandidat(Integer note, String usernameFreelancer, Set<Utilisateur> utilisateurs) {
+		super();
+		this.note = note;
+		this.usernameFreelancer = usernameFreelancer;
+		this.utilisateurs = utilisateurs;
 	}
 	
 	

@@ -93,22 +93,22 @@ public class UtilisateurController {
          {
         	 currentUtilisateur.setRoles(utilisateur.getRoles());
          }
-         if(utilisateur.getEvalutationsEntreprises()!=null) 
-         {
-        	 currentUtilisateur.setEvalutationsEntreprises(utilisateur.getEvalutationsEntreprises());
-         }
-         if(utilisateur.getEvaluationCandidats()!=null) 
-         {
-        	 currentUtilisateur.setEvaluationCandidats(utilisateur.getEvaluationCandidats());
-         }
-         if(utilisateur.getTests()!=null) 
-         {
-        	 currentUtilisateur.setTests(utilisateur.getTests());
-         }
-         if(utilisateur.getProjets()!=null) 
-         {
-        	 currentUtilisateur.setProjets(utilisateur.getProjets());
-         }
+//         if(utilisateur.getEvalutationsEntreprises()!=null) 
+//         {
+//        	 currentUtilisateur.setEvalutationsEntreprises(utilisateur.getEvalutationsEntreprises());
+//         }
+//         if(utilisateur.getEvaluationCandidats()!=null) 
+//         {
+//        	 currentUtilisateur.setEvaluationCandidats(utilisateur.getEvaluationCandidats());
+//         }
+//         if(utilisateur.getTests()!=null) 
+//         {
+//        	 currentUtilisateur.setTests(utilisateur.getTests());
+//         }
+//         if(utilisateur.getProjets()!=null) 
+//         {
+//        	 currentUtilisateur.setProjets(utilisateur.getProjets());
+//         }
          
          return utilisateurService.save(currentUtilisateur);
     }
