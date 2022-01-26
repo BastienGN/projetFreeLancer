@@ -78,7 +78,7 @@ public class UtilisateurController {
 
     @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
     public String updateUtilisateur(
-    		@PathVariable(name = "idUtilisateur") Long idUtilisateur,
+    		@PathVariable(name = "idU") Long idUtilisateur,
     		@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
     	    @RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
     	    @RequestParam(name = "username",required = false) String username,
@@ -91,17 +91,34 @@ public class UtilisateurController {
     									) {
      	try {
     	Utilisateur currentUtilisateur =utilisateurService.findOne(idUtilisateur);
-        currentUtilisateur.setNomUtilisateur(nomUtilisateur);
-        currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
-        currentUtilisateur.setUsername(username);
-        currentUtilisateur.setPassword(password);
-        currentUtilisateur.setAdresseMail(adresseMail);
-        currentUtilisateur.setTelephone(telephone);
+        if (nomUtilisateur !=null) {
+        	currentUtilisateur.setNomUtilisateur(nomUtilisateur);
+        }
+        if (prenomUtilisateur !=null) {
+        	currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
+        }
+        if (username !=null) {
+        	currentUtilisateur.setUsername(username);
+        }
+        if (password !=null) {
+        	currentUtilisateur.setPassword(password);
+        }
+        if (adresseMail !=null) {
+        	currentUtilisateur.setAdresseMail(adresseMail);
+        }
+        if (telephone !=null) {
+        	currentUtilisateur.setTelephone(telephone);
+        }
         if (cv != null) {
             currentUtilisateur.setCv(cv.getBytes());
         }
-        currentUtilisateur.setNote(note);
-        currentUtilisateur.setNomEntreprise(nomEntreprise);
+        if(note!=null){
+            currentUtilisateur.setNote(note);
+        }
+        if(nomEntreprise!=null) 
+        {
+            currentUtilisateur.setNomEntreprise(nomEntreprise);
+        }
 		utilisateurService.save(currentUtilisateur);
     	return "c'est ok";
     	} catch (Exception ex) {
