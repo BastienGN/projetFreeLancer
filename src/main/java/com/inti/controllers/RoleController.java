@@ -34,19 +34,20 @@ public class RoleController {
 	public Role findByIdRoleAndLibelle(@PathVariable("idR") Long idRole, @PathVariable("libelle") String libelle) {
 		return roleService.findByIdRoleAndLibelle(idRole, libelle);
 	}
-//
-//	@RequestMapping(value = "roles", method = RequestMethod.POST)
-//	public Role saveRole(@RequestBody Role role) {
-//		return roleService.save(role);
-//	}
-//
-//	@RequestMapping(value = "roles/{idR}", method = RequestMethod.PUT)
-//	public Role updateRole(@PathVariable(value = "idR") Long idRole, @RequestBody Role role) {
-//		Role currentRole = roleService.findOne(idRole);
-//		currentRole.setLibelle(role.getLibelle());
-//		return roleService.save(currentRole);
-//	}
 
+	//
+//  @RequestMapping(value = "roles", method = RequestMethod.POST)
+//  public Role saveRole(@RequestBody Role role) {
+//      return roleService.save(role);
+//  }
+//
+//  @RequestMapping(value = "roles/{idR}", method = RequestMethod.PUT)
+//  public Role updateRole(@PathVariable(value = "idR") Long idRole, @RequestBody Role role) {
+//      Role currentRole = roleService.findOne(idRole);
+//      currentRole.setLibelle(role.getLibelle());
+//      return roleService.save(currentRole);
+//  }
+	
 	@RequestMapping(value = "roles/{idR}", method = RequestMethod.DELETE)
 	public void deleteRole(@PathVariable(value = "idR") Long idRole) {
 		roleService.delete(idRole);

@@ -35,38 +35,11 @@ public class CandidatureController {
 		return candidatureService.findOne(idCandidature);
 	}
 	
-//	@PostMapping("/candidatures")
-//    public Candidature saveCandidature(
-//    		@RequestParam(name = "statut",required = false) String statut, 
-//    		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation,
-//    		@RequestParam(name = "username",required = false) String username,
-//    		@RequestParam(name ="projet",required=false) Projet projet
-//    		) {
-//            Candidature currentCandidature=new Candidature();
-//            currentCandidature.setStatut(statut);
-//            currentCandidature.setLettreMotivation(lettreMotivation);
-//            currentCandidature.setUsername(username);
-//            currentCandidature.setProjet(projet);
-//            return candidatureService.save(currentCandidature);
-//    }
-	
 	@PostMapping("/candidatures")
 	public Candidature saveCandidature(@RequestBody Candidature candidature)
 	{
 		return candidatureService.save(candidature);
 	}
-	
-//	@PutMapping("/candidatures/{idC}")
-//	public Integer updateCandidature(
-//			@PathVariable("idC") Long idCandidature, 
-//			@RequestParam(name = "statut",required = false) String statut, 
-//    		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation,
-//    		@RequestParam(name = "username",required = false) String username,
-//    		@RequestParam(name ="projet_id_projet",required=false) Long projet_id_projet
-//			)
-//	{
-//		return candidatureService.updateCandidature(lettreMotivation, statut, username, projet_id_projet, idCandidature);
-//	}
 	
 	@PutMapping("/candidatures/{idC}")
 	public Candidature updateCandidature(@PathVariable("idC") Long idCandidature,@RequestBody Candidature candidature) 
