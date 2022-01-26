@@ -49,15 +49,17 @@ public class CandidatureController {
             currentCandidature.setProjet(projet);
             return candidatureService.save(currentCandidature);
     }
-
+	
 	@PutMapping("/candidatures/{idC}")
-	public Candidature updateCandidature(@PathVariable("idC") Long idCandidature,
-			@RequestBody Candidature candidature) {
-		Candidature currentCandidature = candidatureService.findOne(idCandidature);
-        currentCandidature.setStatut(candidature.getStatut());		
-        currentCandidature.setLettreMotivation(candidature.getLettreMotivation());
-        currentCandidature.setUsername(candidature.getUsername());
-		return candidatureService.save(currentCandidature);
+	public Integer updateCandidature(
+			@PathVariable("idC") Long idCandidature, 
+			@RequestParam(name = "statut",required = false) String statut, 
+    		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation,
+    		@RequestParam(name = "username",required = false) String username,
+    		@RequestParam(name ="projet_id_projet",required=false) Long projet_id_projet
+			)
+	{
+		return candidatureService.updateCandidature(lettreMotivation, statut, username, projet_id_projet, idCandidature);
 	}
 
 	@DeleteMapping("/candidatures/{idCandidature}")
@@ -71,29 +73,10 @@ public class CandidatureController {
     	return candidatureService.findCandidatureByUsername(username);
     }
 	
-	/*@PutMapping("/cands/{idC}")
-	public Candidature updateCandidatureStatut(@PathVariable("idC") Long idCandidature,
-			@RequestParam(name = "statut",required = false) String statut) {
-		Candidature currentCandidature = candidatureService.findOne(idCandidature);
-        currentCandidature.setStatut(statut);
-		return candidatureService.save(currentCandidature);
-	}*/
-	
 	@PutMapping("/cands/{statut}/{idC}")
 	public void updateStatutCandidature(@PathVariable("statut")String statut,@PathVariable("idC") Long idCandidature) 
 	{
 		candidatureService.updateStatutCandidatureByIdCandidature(statut, idCandidature);
 	}
-	@PutMapping("/cands/{idC}")
-	public Integer updateCandidature(
-			@PathVariable("idC") Long idCandidature, 
-			@RequestParam(name = "statut",required = false) String statut, 
-    		@RequestParam(name = "lettreMotivation",required = false) String lettreMotivation,
-    		@RequestParam(name = "username",required = false) String username,
-    		@RequestParam(name ="projet_id_projet",required=false) Long projet_id_projet
-			)
-	{
-		return candidatureService.updateCandidature(lettreMotivation, statut, username, projet_id_projet, idCandidature);
 	
-	}
 }

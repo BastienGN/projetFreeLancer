@@ -42,8 +42,8 @@ public class EvaluationCandidatController {
 		return evaluationCandidatService.save(currentEvaluationCandidat);
 	}
 
-	@RequestMapping(value = "evaluationCandidats/{idR}", method = RequestMethod.DELETE)
-	public void deleteEvaluationCandidat(@PathVariable(value = "idR") Long idEvaluationCandidat) {
+	@RequestMapping(value = "evaluationCandidats/{idEC}", method = RequestMethod.DELETE)
+	public void deleteEvaluationCandidat(@PathVariable(value = "idEC") Long idEvaluationCandidat) {
 		evaluationCandidatService.delete(idEvaluationCandidat);
 	}
 	
