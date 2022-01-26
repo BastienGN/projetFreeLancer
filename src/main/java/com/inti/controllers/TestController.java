@@ -45,22 +45,17 @@ public class TestController {
 		return TestService.save(currentTest);
 	}
 	
-	/*@RequestMapping(value = "tests/{idT}", method = RequestMethod.PUT)
-	public Test updateTest(@PathVariable(value = "idT") Long idTest, 
-			@RequestParam(name = "resultat",required = false) String resultat) {
-		Test currentTest = TestService.findOne(idTest);
-		currentTest.setResultat(resultat);
-		return TestService.save(currentTest);
-	}*/
-	
-	@PutMapping("/testsss/{idR}/{idT}")
-	public void updateResultatTest(@PathVariable(value="idR") String resultat,
-            @PathVariable(value = "idT") Long idTest) {
-        TestService.updateResultatTest(resultat, idTest);
-    }
 
 	@RequestMapping(value = "tests/{idT}", method = RequestMethod.DELETE)
 	public void deleteTest(@PathVariable(value = "idT") Long idTest) {
 		TestService.delete(idTest);
 	}
+	
+	
+	//méthode particulière pour modifier les résultats au test
+	@PutMapping("/tests2/{idR}/{idT}")
+	public void updateResultatTest(@PathVariable(value="idR") String resultat,
+            @PathVariable(value = "idT") Long idTest) {
+        TestService.updateResultatTest(resultat, idTest);
+    }
 }

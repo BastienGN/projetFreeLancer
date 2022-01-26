@@ -20,8 +20,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.inti.models.Adresse;
-
 @Entity
 public class Utilisateur implements Serializable {
 	
