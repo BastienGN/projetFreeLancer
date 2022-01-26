@@ -38,12 +38,20 @@ public class EvaluationEntrepriseController {
 	}
 
 	@RequestMapping(value = "evaluationEntreprises/{idEE}", method = RequestMethod.PUT)
-	public EvaluationEntreprise updateEvaluationEntreprise(@PathVariable(value = "idEE") Long idEvaluationEntreprise, @RequestBody EvaluationEntreprise EvaluationEntreprise) {
+	public EvaluationEntreprise updateEvaluationEntreprise(@PathVariable(value = "idEE") Long idEvaluationEntreprise, @RequestBody EvaluationEntreprise evaluationEntreprise) {
 		EvaluationEntreprise currentEvaluationEntreprise = EvaluationEntrepriseService.findOne(idEvaluationEntreprise);
-		currentEvaluationEntreprise.setUsernameJobowner(EvaluationEntreprise.getUsernameJobowner());
-		currentEvaluationEntreprise.setNote(EvaluationEntreprise.getNote());
-		//
-		currentEvaluationEntreprise.setUtilisateurs(EvaluationEntreprise.getUtilisateurs());
+		if(evaluationEntreprise.getUsernameJobowner()!=null) 
+		{
+			currentEvaluationEntreprise.setUsernameJobowner(evaluationEntreprise.getUsernameJobowner());
+		}
+		if(evaluationEntreprise.getNote()!=null) 
+		{
+			currentEvaluationEntreprise.setNote(evaluationEntreprise.getNote());
+		}
+		if(evaluationEntreprise.getUtilisateurs()!=null) 
+		{
+			currentEvaluationEntreprise.setUtilisateurs(evaluationEntreprise.getUtilisateurs());
+		}
 		return EvaluationEntrepriseService.save(currentEvaluationEntreprise);
 	}
 
