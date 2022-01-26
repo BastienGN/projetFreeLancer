@@ -198,6 +198,29 @@ public class Utilisateur implements Serializable {
 		
 	public Utilisateur() {}
 	
+	
+	public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String username, String password,
+			String adresseMail, Long telephone, Integer note, byte[] cv, String nomEntreprise, boolean enabled,
+			Set<Role> roles, Set<EvaluationEntreprise> evalutationsEntreprises, Set<Test> tests,
+			Set<EvaluationCandidat> evaluationCandidats, Set<Projet> projets) {
+		this.nomUtilisateur = nomUtilisateur;
+		this.prenomUtilisateur = prenomUtilisateur;
+		this.username = username;
+		this.password = password;
+		this.adresseMail = adresseMail;
+		this.telephone = telephone;
+		this.note = note;
+		this.cv = cv;
+		this.nomEntreprise = nomEntreprise;
+		this.enabled = enabled;
+		this.roles = roles;
+		this.evalutationsEntreprises = evalutationsEntreprises;
+		this.tests = tests;
+		this.evaluationCandidats = evaluationCandidats;
+		this.projets = projets;
+	}
+	
+	
 	@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur
