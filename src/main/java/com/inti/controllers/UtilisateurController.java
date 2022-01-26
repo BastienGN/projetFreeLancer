@@ -44,11 +44,11 @@ public class UtilisateurController {
             @PathVariable("username") String username) {
         return utilisateurService.findbyUsername(username);
     }
+    
     @PostMapping(value="utilisateurs")
     public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) 
     {
     		return utilisateurService.save(utilisateur);
-  
     }
     
     @PutMapping("utilisateurs/{idU}")
@@ -92,115 +92,9 @@ public class UtilisateurController {
          if(utilisateur.getRoles()!=null) 
          {
         	 currentUtilisateur.setRoles(utilisateur.getRoles());
-         }
-//         if(utilisateur.getEvalutationsEntreprises()!=null) 
-//         {
-//        	 currentUtilisateur.setEvalutationsEntreprises(utilisateur.getEvalutationsEntreprises());
-//         }
-//         if(utilisateur.getEvaluationCandidats()!=null) 
-//         {
-//        	 currentUtilisateur.setEvaluationCandidats(utilisateur.getEvaluationCandidats());
-//         }
-//         if(utilisateur.getTests()!=null) 
-//         {
-//        	 currentUtilisateur.setTests(utilisateur.getTests());
-//         }
-//         if(utilisateur.getProjets()!=null) 
-//         {
-//        	 currentUtilisateur.setProjets(utilisateur.getProjets());
-//         }
-         
+         }     
          return utilisateurService.save(currentUtilisateur);
     }
-//    @RequestMapping(value = "utilisateurs", method = RequestMethod.POST)
-//	public String saveUtilisateur(
-//			@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
-//    		@RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
-//    		@RequestParam(name = "username",required = false) String username,
-//    		@RequestParam(name = "password",required = false) String password, 
-//    		@RequestParam(name = "adresseMail",required = false) String adresseMail,
-//    		@RequestParam(name = "telephone",required = false) Long telephone, 
-//    		@RequestParam(name = "cv",required = false) MultipartFile cv,
-//    		@RequestParam(name = "note",required = false) Integer note,
-//			@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise
-//								) {
-//    	try {
-//    		Utilisateur currentUtilisateur = new Utilisateur();
-//        currentUtilisateur.setNomUtilisateur(nomUtilisateur);
-//        currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
-//        currentUtilisateur.setUsername(username);
-//        currentUtilisateur.setPassword(password);
-//        currentUtilisateur.setAdresseMail(adresseMail);
-//        currentUtilisateur.setTelephone(telephone);
-//        if (cv != null) {
-//            currentUtilisateur.setCv(cv.getBytes());
-//        }
-//        currentUtilisateur.setNote(note);
-//        currentUtilisateur.setNomEntreprise(nomEntreprise);
-//		utilisateurService.save(currentUtilisateur);
-//    	return "c'est ok";
-//    	} catch (Exception ex) {
-//            ex.printStackTrace();
-//            return "c'est la problèmatique";
-//    	}
-//
-//    	
-//	}
-//
-//    @RequestMapping(value="utilisateurs/{idU}", method=RequestMethod.PUT)
-//    public String updateUtilisateur(
-//    		@PathVariable(name = "idU") Long idUtilisateur,
-//    		@RequestParam(name = "nomUtilisateur",required = false) String nomUtilisateur,
-//    	    @RequestParam(name = "prenomUtilisateur",required = false) String prenomUtilisateur,
-//    	    @RequestParam(name = "username",required = false) String username,
-//    	    @RequestParam(name = "password",required = false) String password, 
-//    	    @RequestParam(name = "adresseMail",required = false) String adresseMail,
-//    	    @RequestParam(name = "telephone",required = false) Long telephone, 
-//    	    @RequestParam(name="roles",required=false) Set<Role> roles,//ici
-//    	    @RequestParam(name = "cv",required = false) MultipartFile cv,
-//    	    @RequestParam(name = "note",required = false) Integer note,
-//    		@RequestParam(name = "nomEntreprise",required = false) String nomEntreprise
-//    									) {
-//     	try {
-//    	Utilisateur currentUtilisateur =utilisateurService.findOne(idUtilisateur);
-//    	if (roles !=null) {
-//        	currentUtilisateur.setRoles(roles);//ici
-//        }
-//        if (nomUtilisateur !=null) {
-//        	currentUtilisateur.setNomUtilisateur(nomUtilisateur);
-//        }
-//        if (prenomUtilisateur !=null) {
-//        	currentUtilisateur.setPrenomUtilisateur(prenomUtilisateur);
-//        }
-//        if (username !=null) {
-//        	currentUtilisateur.setUsername(username);
-//        }
-//        if (password !=null) {
-//        	currentUtilisateur.setPassword(password);
-//        }
-//        if (adresseMail !=null) {
-//        	currentUtilisateur.setAdresseMail(adresseMail);
-//        }
-//        if (telephone !=null) {
-//        	currentUtilisateur.setTelephone(telephone);
-//        }
-//        if (cv != null) {
-//            currentUtilisateur.setCv(cv.getBytes());
-//        }
-//        if(note!=null){
-//            currentUtilisateur.setNote(note);
-//        }
-//        if(nomEntreprise!=null) 
-//        {
-//            currentUtilisateur.setNomEntreprise(nomEntreprise);
-//        }
-//		utilisateurService.save(currentUtilisateur);
-//    	return "c'est ok";
-//    	} catch (Exception ex) {
-//            ex.printStackTrace();
-//            return "c'est la problèmatique";
-//    	}
-//}
 
     @RequestMapping(value = "utilisateurs/{idUtilisateur}", method = RequestMethod.DELETE)
     public void deleteUtilisateur(@PathVariable("idUtilisateur") Long idUtilisateur) {
