@@ -237,6 +237,20 @@ public Utilisateur(Long idUtilisateur, String nomUtilisateur, String prenomUtili
 	this.roles = roles;
 }
 
+public Utilisateur(String nomUtilisateur, String prenomUtilisateur, String username,
+		String password, String adresseMail, Long telephone, Integer note, byte[] cv, String nomEntreprise) {
+	super();
+	this.nomUtilisateur = nomUtilisateur;
+	this.prenomUtilisateur = prenomUtilisateur;
+	this.username = username;
+	this.password = password;
+	this.adresseMail = adresseMail;
+	this.telephone = telephone;
+	this.note = note;
+	this.cv = cv;
+	this.nomEntreprise = nomEntreprise;
+}
+
 		@Override
 	public String toString() {
 		return "Utilisateur [idUtilisateur=" + idUtilisateur + ", nomUtilisateur=" + nomUtilisateur

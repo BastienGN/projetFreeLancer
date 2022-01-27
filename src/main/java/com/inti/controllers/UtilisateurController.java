@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,6 +28,8 @@ import com.inti.services.interfaces.IUtilisateurService;
 public class UtilisateurController {
     @Autowired
     IUtilisateurService utilisateurService;
+    @Autowired
+	PasswordEncoder passwordEncoder;
 
     @RequestMapping(value="utilisateurs", method = RequestMethod.GET)
     public List<Utilisateur> findAll() {
@@ -48,7 +51,9 @@ public class UtilisateurController {
     @PostMapping(value="utilisateurs")
     public Utilisateur saveUtilisateur(@RequestBody Utilisateur utilisateur) 
     {
-    		return utilisateurService.save(utilisateur);
+    		//return utilisateurService.save(utilisateur);
+    	Utilisateur currentUser=new Utilisateur(utilisateur.getNomUtilisateur(), utilisateur.getPrenomUtilisateur(), utilisateur.getUsername(), passwordEncoder.encode(utilisateur.getPassword()), utilisateur.getAdresseMail(), utilisateur.getTelephone(), utilisateur.getNote(), utilisateur.getCv(), utilisateur.getNomEntreprise());
+		return utilisateurService.save(currentUser);
     }
     
     @PutMapping("utilisateurs/{idU}")
@@ -68,7 +73,7 @@ public class UtilisateurController {
          	currentUtilisateur.setUsername(utilisateur.getUsername());
          }
          if (utilisateur.getPassword() !=null) {
-         	currentUtilisateur.setPassword(utilisateur.getPassword());
+         	currentUtilisateur.setPassword(passwordEncoder.encode(utilisateur.getPassword()));
          }
          if (utilisateur.getAdresseMail() !=null) {
          	currentUtilisateur.setAdresseMail(utilisateur.getAdresseMail());
