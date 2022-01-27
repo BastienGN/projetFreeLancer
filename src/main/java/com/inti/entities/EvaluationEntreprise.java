@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -61,7 +62,7 @@ public class EvaluationEntreprise {
 
 
 	//Nouveau ManyToMany ici
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(	name = "Profil_EvaluationEntreprise_Freelancer", 
 				joinColumns = @JoinColumn(name = "id_EvaluationEntreprise", 
 				referencedColumnName = "idEvaluationEntreprise"), 

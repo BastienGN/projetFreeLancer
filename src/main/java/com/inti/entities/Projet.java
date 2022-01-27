@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,7 +57,7 @@ public class Projet implements Serializable{
 		}
 		
 		
-		@ManyToMany
+		@ManyToMany(fetch = FetchType.EAGER)
 		@JoinTable(	name = "Profil_Projet_JobOwner", 
 					joinColumns = @JoinColumn(name = "id_projet", referencedColumnName = "idProjet"), 
 					inverseJoinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"))

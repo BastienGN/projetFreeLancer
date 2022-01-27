@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,7 +44,7 @@ public class EvaluationCandidat implements Serializable {
 			this.usernameFreelancer = usernameFreelancer;
 		}
 		
-		@ManyToMany
+		@ManyToMany(fetch = FetchType.EAGER)
 		@JoinTable(	name = "Profil_EvaluationCandidat_JobOwner",
 					joinColumns = @JoinColumn(name = "id_evalCandidat", referencedColumnName = "idEvaluationCandidat"), 
 					inverseJoinColumns = @JoinColumn(name = "id_jobOwner", referencedColumnName = "idUtilisateur"))

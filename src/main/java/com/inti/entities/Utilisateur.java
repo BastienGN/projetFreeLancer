@@ -129,7 +129,7 @@ public class Utilisateur implements Serializable {
 		
 		
 	//Relation
-	@ManyToMany()
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(	name = "Profil_Utilisateur_Role",
 				joinColumns = @JoinColumn(name = "id_utilisateur", referencedColumnName = "idUtilisateur"),
 				inverseJoinColumns = @JoinColumn(name = "id_role", referencedColumnName = "idRole"))
